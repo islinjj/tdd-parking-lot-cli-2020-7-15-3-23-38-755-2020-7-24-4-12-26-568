@@ -11,8 +11,4 @@ public class CarTicket {
     public CarTicket(String carId) {
         this.ticketId = carId;
     }
-
-    public String getTicketId() {
-        return ticketId;
-    }
 }
