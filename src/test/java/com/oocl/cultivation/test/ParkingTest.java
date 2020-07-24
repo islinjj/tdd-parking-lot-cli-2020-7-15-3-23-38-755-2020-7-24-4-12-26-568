@@ -19,10 +19,4 @@ class ParkingTest {
         //then
         Assertions.assertEquals(carId,parkingTicket);
     }
-
-    @Test
-    void should_return_a_car_when_fetch_given_correct_ticket() {
-        //given
-        String parkingTicket = "A001";
-    }
 }
