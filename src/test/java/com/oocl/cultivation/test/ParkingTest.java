@@ -2,6 +2,7 @@ package com.oocl.cultivation.test;
 
 import com.oocl.cultivation.Car;
 import com.oocl.cultivation.ParkingBoy;
+import com.oocl.cultivation.Ticket;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
@@ -14,9 +15,9 @@ class ParkingTest {
         ParkingBoy parkingBoy = new ParkingBoy();
 
         //when
-        String parkingTicket = parkingBoy.park(car);
+        Ticket parkingTicket = parkingBoy.park(car);
 
         //then
-        Assertions.assertEquals(carId,parkingTicket);
+        Assertions.assertNotNull(parkingTicket);
     }
 }
