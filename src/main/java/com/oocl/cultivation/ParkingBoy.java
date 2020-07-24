@@ -8,8 +8,8 @@ package com.oocl.cultivation;
 public class ParkingBoy {
     private Ticket ticket;
 
-    public String park(Car car) {
+    public Ticket park(Car car) {
         ticket = new Ticket(car.getCarId());
-        return ticket.getCarId();
+        return ticket;
     }
 }
