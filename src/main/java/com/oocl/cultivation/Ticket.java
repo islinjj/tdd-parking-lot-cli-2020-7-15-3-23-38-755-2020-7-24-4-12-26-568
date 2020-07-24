@@ -12,7 +12,4 @@ public class Ticket {
         this.carId = carId;
     }
 
-    public String getCarId() {
-        return carId;
-    }
 }
