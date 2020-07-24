@@ -22,7 +22,7 @@ class ParkingTest {
     }
 
     @Test
-    void should_return_a_car_when_fetch_given_a_correct_parking_ticket() {
+    void should_fetch_a_car_when_fetch_given_a_correct_parking_ticket() {
         //given
         Car parkingCar = new Car("A001");
         ParkingLot parkingLot = new ParkingLot();
@@ -36,7 +36,7 @@ class ParkingTest {
     }
 
     @Test
-    void should_return_2_car_when_fetch_given_2_correct_parking_ticket() {
+    void should_fetch_2_car_when_fetch_given_2_correct_parking_ticket() {
         //given
         Car parkingCarOne = new Car("A001");
         Car parkingCarTwo = new Car("A002");
