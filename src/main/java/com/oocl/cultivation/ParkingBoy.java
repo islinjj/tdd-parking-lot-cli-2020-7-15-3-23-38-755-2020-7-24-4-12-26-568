@@ -6,7 +6,10 @@ package com.oocl.cultivation;
  * @Version 1.0
  */
 public class ParkingBoy {
+    private Ticket ticket;
+
     public String park(Car car) {
-        return "A001";
+        ticket = new Ticket(car.getCarId());
+        return ticket.getCarId();
     }
 }
