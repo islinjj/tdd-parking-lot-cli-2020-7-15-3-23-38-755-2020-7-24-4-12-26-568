@@ -10,6 +10,7 @@ sourceCompatibility = 1.8
 
 repositories {
     mavenCentral()
+    maven{ url 'http://maven.aliyun.com/nexus/content/groups/public/'}
 }
 
 jacocoTestReport {
@@ -29,5 +30,6 @@ dependencies {
 }
 
 test {
+    // Use junit platform for unit tests
     useJUnitPlatform()
 }
