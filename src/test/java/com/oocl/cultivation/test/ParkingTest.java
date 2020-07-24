@@ -34,4 +34,22 @@ class ParkingTest {
         //then
         Assertions.assertEquals(parkingCar,fetchCar);
     }
+
+    @Test
+    void should_return_2_car_when_fetch_given_2_correct_parking_ticket() {
+        //given
+        Car parkingCarOne = new Car("A001");
+        Car parkingCarTwo = new Car("A002");
+        ParkingLot parkingLot = new ParkingLot();
+        CarTicket carTicketOne = parkingLot.park(parkingCarOne);
+        CarTicket carTicketTwo = parkingLot.park(parkingCarTwo);
+
+        //when
+        Car fetchCarOne = parkingLot.fetch(carTicketOne);
+        Car fetchCarTwo = parkingLot.fetch(carTicketTwo);
+
+        //then
+        Assertions.assertEquals(parkingCarOne,fetchCarOne);
+        Assertions.assertEquals(parkingCarTwo,fetchCarTwo);
+    }
 }
