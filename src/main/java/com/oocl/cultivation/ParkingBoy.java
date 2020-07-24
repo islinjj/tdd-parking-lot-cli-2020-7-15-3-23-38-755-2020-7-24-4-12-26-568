@@ -12,4 +12,8 @@ public class ParkingBoy {
         ticket = new Ticket(car.getCarId());
         return ticket;
     }
+
+    public Car fetch(Ticket ticket) {
+        return null;
+    }
 }
