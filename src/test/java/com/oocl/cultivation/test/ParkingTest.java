@@ -12,10 +12,10 @@ class ParkingTest {
         //given
         String carId = "A001";
         Car car = new Car(carId);
-        ParkingLot parkingBoy = new ParkingLot();
+        ParkingLot parkingLot = new ParkingLot();
 
         //when
-        CarTicket parkingTicket = parkingBoy.park(car);
+        CarTicket parkingTicket = parkingLot.park(car);
 
         //then
         Assertions.assertNotNull(parkingTicket);
@@ -25,11 +25,11 @@ class ParkingTest {
     void should_return_a_car_when_fetch_given_a_correct_parking_ticket() {
         //given
         Car parkingCar = new Car("A001");
-        ParkingLot parkingBoy = new ParkingLot();
-        CarTicket ticket = parkingBoy.park(parkingCar);
+        ParkingLot parkingLot = new ParkingLot();
+        CarTicket ticket = parkingLot.park(parkingCar);
 
         //when
-        Car fetchCar = parkingBoy.fetch(ticket);
+        Car fetchCar = parkingLot.fetch(ticket);
 
         //then
         Assertions.assertEquals(parkingCar,fetchCar);
