@@ -7,15 +7,16 @@ import org.junit.jupiter.api.Test;
 
 class ParkingTest {
     @Test
-    void should_return_parking_ticket_when_park_given_a_car_and_parking_boy() {
+    void should_return_parking_ticket_when_park_given_a_car() {
         //given
-        Car car = new Car();
+        String carId = "A001";
+        Car car = new Car(carId);
         ParkingBoy parkingBoy = new ParkingBoy();
 
         //when
         String parkingTicket = parkingBoy.park(car);
 
         //then
-        Assertions.assertNotNull(parkingTicket);
+        Assertions.assertEquals(carId,parkingTicket);
     }
 }
