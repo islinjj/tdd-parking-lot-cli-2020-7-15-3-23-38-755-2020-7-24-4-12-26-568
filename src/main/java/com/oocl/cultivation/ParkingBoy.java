@@ -17,8 +17,9 @@ public class ParkingBoy {
             printErrorMsg("Not enough position.");
             return null;
         }
-        if (getCarTicket(car) != null)
-            return getCarTicket(car);
+        CarTicket carTicket = getCarTicket(car);
+        if (carTicket != null)
+            return carTicket;
         return null;
     }
 
@@ -29,7 +30,7 @@ public class ParkingBoy {
             }else {
                 CarTicket parkingTicket = new CarTicket(car.getCarId());
                 carTicketCarHashMap.put(parkingTicket,car);
-                parkingLot.countUsedParkingSpace();
+                parkingLot.countUsedParkingPosition();
                 parkingLot.countCapacity();
                 return parkingTicket;
             }

@@ -279,8 +279,8 @@ class ParkingTest {
         }
 
         //then
-        Assertions.assertEquals(9,parkingLotOne.getUsedParkingSpace());
-        Assertions.assertEquals(0,parkingLotTwo.getUsedParkingSpace());
+        Assertions.assertEquals(9,parkingLotOne.getUsedParkingPosition());
+        Assertions.assertEquals(0,parkingLotTwo.getUsedParkingPosition());
     }
 
     @Test
@@ -301,7 +301,7 @@ class ParkingTest {
         }
 
         //then
-        Assertions.assertEquals(10,parkingLotOne.getUsedParkingSpace());
-        Assertions.assertEquals(1,parkingLotTwo.getUsedParkingSpace());
+        Assertions.assertEquals(10,parkingLotOne.getUsedParkingPosition());
+        Assertions.assertEquals(1,parkingLotTwo.getUsedParkingPosition());
     }
 }

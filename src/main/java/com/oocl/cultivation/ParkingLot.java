@@ -9,26 +9,21 @@ import java.util.Map;
  * @Version 1.0
  */
 public class ParkingLot {
-    private Map<CarTicket,Car> carTicketCarHashMap = new HashMap<>();
     private int capacity = 10;
-    private int usedParkingSpace = 0;
+    private int usedParkingPosition = 0;
 
     public int getCapacity() {
-        return capacity;
+        return this.capacity;
     }
 
-    public void setUsedParkingSpace(int usedParkingSpace) {
-        this.usedParkingSpace = usedParkingSpace;
-    }
-
-    public int getUsedParkingSpace() {
-        return usedParkingSpace;
+    public int getUsedParkingPosition() {
+        return this.usedParkingPosition;
     }
 
     public void countCapacity() {
         this.capacity--;
     }
-    public void countUsedParkingSpace(){
-        this.usedParkingSpace++;
+    public void countUsedParkingPosition(){
+        this.usedParkingPosition++;
     }
 }
