@@ -41,10 +41,10 @@ class ParkingTest {
         //given
         Car parkingCar = new Car("A001");
         ParkingLot parkingLot = new ParkingLot();
-        CarTicket ticket = parkingLot.park(parkingCar);
+        CarTicket parkingTicket = parkingLot.park(parkingCar);
 
         //when
-        Car fetchCar = parkingLot.fetch(ticket);
+        Car fetchCar = parkingLot.fetch(parkingTicket);
 
         //then
         Assertions.assertEquals(parkingCar,fetchCar);
@@ -56,12 +56,12 @@ class ParkingTest {
         Car parkingCarOne = new Car("A001");
         Car parkingCarTwo = new Car("A002");
         ParkingLot parkingLot = new ParkingLot();
-        CarTicket carTicketOne = parkingLot.park(parkingCarOne);
-        CarTicket carTicketTwo = parkingLot.park(parkingCarTwo);
+        CarTicket parkingTicketOne = parkingLot.park(parkingCarOne);
+        CarTicket parkingTicketTwo = parkingLot.park(parkingCarTwo);
 
         //when
-        Car fetchCarOne = parkingLot.fetch(carTicketOne);
-        Car fetchCarTwo = parkingLot.fetch(carTicketTwo);
+        Car fetchCarOne = parkingLot.fetch(parkingTicketOne);
+        Car fetchCarTwo = parkingLot.fetch(parkingTicketTwo);
 
         //then
         Assertions.assertEquals(parkingCarOne,fetchCarOne);
