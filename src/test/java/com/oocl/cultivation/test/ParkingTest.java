@@ -87,4 +87,18 @@ class ParkingTest {
         Assertions.assertNotNull(fetchCarOne);
         Assertions.assertEquals(parkingCarOne,fetchCarOne);
     }
+
+    @Test
+    void should_return_null_when_fetch_given_no_ticket() {
+        //given
+        Car parkingCar = new Car("A001");
+        ParkingLot parkingLot = new ParkingLot();
+        parkingLot.park(parkingCar);
+
+        //when
+        Car fetchCar = parkingLot.fetch(null);
+
+        //then
+        Assertions.assertNull(fetchCar);
+    }
 }
