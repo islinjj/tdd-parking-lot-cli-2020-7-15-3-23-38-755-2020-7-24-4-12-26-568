@@ -14,7 +14,7 @@ public class ParkingLot {
 
     public CarTicket park(Car car) {
         if (parkedCars.size() == capacity){
-            System.out.print("Not enough position.");
+            printErrorMsg("Not enough position.");
             return null;
         }
         CarTicket parkingTicket = new CarTicket(car.getCarId());
@@ -25,13 +25,17 @@ public class ParkingLot {
     public Car fetch(CarTicket parkingTicket) {
         Car car = parkedCars.get(parkingTicket);
         if (parkingTicket == null){
-            System.out.print("Please provide your parking ticket.");
+            printErrorMsg("Please provide your parking ticket.");
             return null;
         }
         if (car == null){
-            System.out.print("Unrecognized parking ticket.");
+            printErrorMsg("Unrecognized parking ticket.");
         }
         parkedCars.remove(parkingTicket);
         return car;
+    }
+
+    private void printErrorMsg(String s) {
+        System.out.print(s);
     }
 }
