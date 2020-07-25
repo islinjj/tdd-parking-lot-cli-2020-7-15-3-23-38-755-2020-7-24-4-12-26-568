@@ -13,12 +13,11 @@ public class ParkingLot {
     private int capacity = 10;
 
     public CarTicket park(Car car) {
-        CarTicket parkingTicket = new CarTicket(car.getCarId());
-        parkedCars.put(parkingTicket,car);
-        this.capacity--;
-        if (this.capacity < 0){
+        if (parkedCars.size() == capacity){
             return null;
         }
+        CarTicket parkingTicket = new CarTicket(car.getCarId());
+        parkedCars.put(parkingTicket,car);
         return parkingTicket;
     }
 
