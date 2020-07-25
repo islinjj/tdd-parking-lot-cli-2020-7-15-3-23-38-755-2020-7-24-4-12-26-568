@@ -233,8 +233,10 @@ class ParkingTest {
         parkingLotList.add(parkingLotTwo);
         ParkingBoy parkingBoy = new ParkingBoy(parkingLotList);
 
-        //given
-        parkingBoy.park(parkingLotList,carsAmount);
+        // given
+        for (int i = 0; i < carsAmount; i++) {
+            parkingBoy.park(new Car("A00"+Integer.valueOf(i)));
+        }
 
         //when
         Assertions.assertEquals(9,parkingLotOne.getUsedParkingSpace());
