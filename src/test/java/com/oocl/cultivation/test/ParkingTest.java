@@ -206,4 +206,20 @@ class ParkingTest {
         Assertions.assertNull(parkingTicket);
     }
 
+    @Test
+    void should_print_error_msg_when_park_with_no_position_given_cars_and_capacity() {
+        //given
+        ParkingLot parkingLot = new ParkingLot();
+        int capacity = 10;
+        for (int i = 1; i <= capacity; i++){
+            parkingLot.park(new Car("A00" + Integer.valueOf(i)));
+        }
+
+        //when
+        parkingLot.park(new Car("A0011"));
+
+        //then
+        Assertions.assertEquals("Not enough position.",systemOut());
+    }
+
 }
