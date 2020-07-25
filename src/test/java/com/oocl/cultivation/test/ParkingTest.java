@@ -133,7 +133,7 @@ class ParkingTest {
     }
 
     @Test
-    void should_fetch_null_when_fetch_given_used_ticket() {
+    void should_print_unrecognized_parking_ticket_when_fetch_given_used_ticket() {
         //given
         ParkingLot parkingLot = new ParkingLot();
         Car car = new Car("A001");
@@ -144,7 +144,7 @@ class ParkingTest {
         Car fetchSameCarAgain = parkingLot.fetch(parkingTicket);
 
         Assertions.assertNotNull(fetchCar);
-        Assertions.assertNull(fetchSameCarAgain);
+        Assertions.assertEquals("Unrecognized parking ticket.", systemOut());
     }
 
     @Test
