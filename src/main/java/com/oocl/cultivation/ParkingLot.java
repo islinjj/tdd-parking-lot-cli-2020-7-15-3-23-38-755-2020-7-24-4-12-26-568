@@ -9,17 +9,17 @@ import java.util.Map;
  * @Version 1.0
  */
 public class ParkingLot {
-    private Map<CarTicket,Car> parkedCarts = new HashMap<>();
+    private Map<CarTicket,Car> parkedCars = new HashMap<>();
 
     public CarTicket park(Car car) {
         CarTicket parkingTicket = new CarTicket(car.getCarId());
-        parkedCarts.put(parkingTicket,car);
+        parkedCars.put(parkingTicket,car);
         return parkingTicket;
     }
 
     public Car fetch(CarTicket parkingTicket) {
-        Car car = parkedCarts.get(parkingTicket);
-        parkedCarts.remove(parkingTicket);
+        Car car = parkedCars.get(parkingTicket);
+        parkedCars.remove(parkingTicket);
         return car;
     }
 }
