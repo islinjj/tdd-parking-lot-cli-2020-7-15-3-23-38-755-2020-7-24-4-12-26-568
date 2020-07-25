@@ -114,19 +114,4 @@ class ParkingTest {
         //then
         Assertions.assertNull(fetchCar);
     }
-
-    @Test
-    void should_fetch_null_when_fetch_given_used_ticket() {
-        //given
-        ParkingLot parkingLot = new ParkingLot();
-        Car car = new Car("A001");
-        CarTicket parkingTicket = parkingLot.park(car);
-
-        //when
-        Car fetchCar = parkingLot.fetch(parkingTicket);
-        Car fetchSameCarAgain = parkingLot.fetch(parkingTicket);
-
-        Assertions.assertNotNull(fetchCar);
-        Assertions.assertNull(fetchSameCarAgain);
-    }
 }
