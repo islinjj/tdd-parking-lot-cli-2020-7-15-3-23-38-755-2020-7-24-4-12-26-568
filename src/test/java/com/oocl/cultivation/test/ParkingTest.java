@@ -233,7 +233,7 @@ class ParkingTest {
         ParkingBoy parkingBoy = new ParkingBoy(parkingLotList);
         int capacity = 10;
         for (int i = 1; i <= capacity; i++){
-            parkingBoy.park(new Car("A00" + Integer.valueOf(i)));
+            parkingBoy.park(new Car("A00" + i));
         }
 
         //when
@@ -252,7 +252,7 @@ class ParkingTest {
         ParkingBoy parkingBoy = new ParkingBoy(parkingLotList);
         int capacity = 10;
         for (int i = 1; i <= capacity; i++){
-            parkingBoy.park(new Car("A00" + Integer.valueOf(i)));
+            parkingBoy.park(new Car("A00" + i));
         }
 
         //when
@@ -275,7 +275,7 @@ class ParkingTest {
 
         // when
         for (int i = 0; i < carsAmount; i++) {
-            parkingBoy.park(new Car("A00"+Integer.valueOf(i)));
+            parkingBoy.park(new Car("A00" + i));
         }
 
         //then
@@ -297,12 +297,11 @@ class ParkingTest {
         //when
         // when
         for (int i = 0; i < carsAmount; i++) {
-            parkingBoy.park(new Car("A00"+Integer.valueOf(i)));
+            parkingBoy.park(new Car("A00"+i));
         }
 
         //then
         Assertions.assertEquals(10,parkingLotOne.getUsedParkingSpace());
         Assertions.assertEquals(1,parkingLotTwo.getUsedParkingSpace());
-
     }
 }
