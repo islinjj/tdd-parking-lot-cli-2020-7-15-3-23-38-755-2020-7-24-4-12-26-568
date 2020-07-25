@@ -14,6 +14,7 @@ public class ParkingLot {
 
     public CarTicket park(Car car) {
         if (parkedCars.size() == capacity){
+            System.out.print("Not enough position.");
             return null;
         }
         CarTicket parkingTicket = new CarTicket(car.getCarId());
