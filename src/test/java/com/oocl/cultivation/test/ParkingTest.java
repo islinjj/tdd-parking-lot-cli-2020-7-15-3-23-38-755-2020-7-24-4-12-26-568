@@ -106,7 +106,7 @@ class ParkingTest {
     }
 
     @Test
-    void should_print_error_msg_when_fetch_given_no_ticket() {
+    void should_fetch_null_when_fetch_given_no_ticket() {
         //given
         Car car = new Car("A001");
         ParkingLot parkingLot = new ParkingLot();
@@ -116,7 +116,35 @@ class ParkingTest {
         Car fetchCar = parkingLot.fetch(null);
 
         //then
+        Assertions.assertNull(fetchCar);
+    }
+
+    @Test
+    void should_print_error_msg_when_fetch_given_no_ticket() {
+        //given
+        Car car = new Car("A001");
+        ParkingLot parkingLot = new ParkingLot();
+        parkingLot.park(car);
+
+        //when
+        parkingLot.fetch(null);
+
+        //then
         Assertions.assertEquals("Please provide your parking ticket.",systemOut());
+    }
+
+    @Test
+    void should_fetch_null_when_fetch_given_wrong_ticket() {
+        // given
+        ParkingLot parkingLot = new ParkingLot();
+        CarTicket wrongParkingTicket = new CarTicket("xxxx");
+
+        // when
+        //when
+        Car fetchCar = parkingLot.fetch(wrongParkingTicket);
+
+        // then
+        Assertions.assertNull(fetchCar);
     }
 
     @Test
@@ -133,7 +161,7 @@ class ParkingTest {
     }
 
     @Test
-    void should_print_unrecognized_parking_ticket_when_fetch_given_used_ticket() {
+    void should_fetch_null_when_fetch_given_used_ticket() {
         //given
         ParkingLot parkingLot = new ParkingLot();
         Car car = new Car("A001");
@@ -142,6 +170,21 @@ class ParkingTest {
         //when
         Car fetchCar = parkingLot.fetch(parkingTicket);
         Car fetchSameCarAgain = parkingLot.fetch(parkingTicket);
+
+        Assertions.assertNotNull(fetchCar);
+        Assertions.assertNull(fetchSameCarAgain);
+    }
+
+    @Test
+    void should_print_unrecognized_parking_ticket_when_fetch_given_used_ticket() {
+        //given
+        ParkingLot parkingLot = new ParkingLot();
+        Car car = new Car("A001");
+        CarTicket parkingTicket = parkingLot.park(car);
+
+        //when
+        Car fetchCar = parkingLot.fetch(parkingTicket);
+        parkingLot.fetch(parkingTicket);
 
         Assertions.assertNotNull(fetchCar);
         Assertions.assertEquals("Unrecognized parking ticket.", systemOut());
