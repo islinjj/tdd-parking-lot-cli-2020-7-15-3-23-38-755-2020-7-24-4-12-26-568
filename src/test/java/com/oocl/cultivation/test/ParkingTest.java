@@ -3,26 +3,10 @@ package com.oocl.cultivation.test;
 import com.oocl.cultivation.Car;
 import com.oocl.cultivation.ParkingLot;
 import com.oocl.cultivation.CarTicket;
-import org.junit.Before;
 import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import java.io.ByteArrayOutputStream;
-import java.io.PrintStream;
-
 class ParkingTest {
-    private ByteArrayOutputStream outContent = new ByteArrayOutputStream();
-
-    @BeforeEach
-    public void setup() {
-        System.setOut(new PrintStream(outContent));
-    }
-
-    public String systemOut() {
-        return outContent.toString();
-    }
-
     @Test
     void should_return_parking_ticket_when_park_given_1_car() {
         //given
@@ -105,17 +89,17 @@ class ParkingTest {
     }
 
     @Test
-    void should_get_unrecognized_parking_ticket_when_fetch_given_no_ticket() {
+    void should_fetch_null_when_fetch_given_no_ticket() {
         //given
         Car car = new Car("A001");
         ParkingLot parkingLot = new ParkingLot();
         parkingLot.park(car);
 
         //when
-        parkingLot.fetch(null);
+        Car fetchCar = parkingLot.fetch(null);
 
-        // then
-        Assertions.assertEquals("Unrecognized parking ticket.",systemOut());
+        //then
+        Assertions.assertNull(fetchCar);
     }
 
     @Test
