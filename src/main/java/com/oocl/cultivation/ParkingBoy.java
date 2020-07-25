@@ -6,9 +6,20 @@ import java.util.Map;
 
 public class ParkingBoy {
     private List<ParkingLot> parkingLotList;
+    private ParkingLot parkingLot;
 
-    public void park(List<ParkingLot> parkingLotList, int carsAmount) {
-        parkingLotList.get(0).setUsedParkingSpace(9);
-        parkingLotList.get(1).setUsedParkingSpace(0);
+    public ParkingBoy(List<ParkingLot> parkingLotList) {
+        this.parkingLotList = parkingLotList;
+    }
+
+    public void park(Car car) {
+        for (ParkingLot parkingLot : parkingLotList) {
+            if (parkingLot.getCapacity() == 0){
+                continue;
+            }else {
+                parkingLot.park(car);
+                break;
+            }
+        }
     }
 }

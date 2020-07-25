@@ -9,21 +9,36 @@ import java.util.Map;
  * @Version 1.0
  */
 public class ParkingLot {
-    private Map<CarTicket,Car> parkedCars = new HashMap<>();
+    private Map<CarTicket,Car> carTicketCarHashMap = new HashMap<>();
     private int capacity = 10;
+    private int usedParkingSpace = 0;
+
+    public int getCapacity() {
+        return capacity;
+    }
+
+    public void setUsedParkingSpace(int usedParkingSpace) {
+        this.usedParkingSpace = usedParkingSpace;
+    }
+
+    public int getUsedParkingSpace() {
+        return usedParkingSpace;
+    }
 
     public CarTicket park(Car car) {
-        if (parkedCars.size() == capacity){
+        if (capacity == 0){
             printErrorMsg("Not enough position.");
             return null;
         }
         CarTicket parkingTicket = new CarTicket(car.getCarId());
-        parkedCars.put(parkingTicket,car);
+        carTicketCarHashMap.put(parkingTicket,car);
+        capacity--;
+        usedParkingSpace++;
         return parkingTicket;
     }
 
     public Car fetch(CarTicket parkingTicket) {
-        Car car = parkedCars.get(parkingTicket);
+        Car car = carTicketCarHashMap.get(parkingTicket);
         if (parkingTicket == null){
             printErrorMsg("Please provide your parking ticket.");
             return null;
@@ -31,11 +46,12 @@ public class ParkingLot {
         if (car == null){
             printErrorMsg("Unrecognized parking ticket.");
         }
-        parkedCars.remove(parkingTicket);
+        carTicketCarHashMap.remove(parkingTicket);
         return car;
     }
 
     private void printErrorMsg(String s) {
         System.out.print(s);
     }
+
 }
