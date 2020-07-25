@@ -120,7 +120,7 @@ class ParkingTest {
     }
 
     @Test
-    void should_get_unrecognized_parking_ticket_when_fetch_given_wrong_ticket() {
+    void should_print_unrecognized_parking_ticket_when_fetch_given_wrong_ticket() {
         // given
         ParkingLot parkingLot = new ParkingLot();
         CarTicket wrongParkingTicket = new CarTicket("xxxx");
