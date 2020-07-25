@@ -25,33 +25,10 @@ public class ParkingLot {
         return usedParkingSpace;
     }
 
-    public CarTicket park(Car car) {
-        if (capacity == 0){
-            printErrorMsg("Not enough position.");
-            return null;
-        }
-        CarTicket parkingTicket = new CarTicket(car.getCarId());
-        carTicketCarHashMap.put(parkingTicket,car);
-        capacity--;
-        usedParkingSpace++;
-        return parkingTicket;
+    public void countCapacity() {
+        this.capacity--;
     }
-
-    public Car fetch(CarTicket parkingTicket) {
-        Car car = carTicketCarHashMap.get(parkingTicket);
-        if (parkingTicket == null){
-            printErrorMsg("Please provide your parking ticket.");
-            return null;
-        }
-        if (car == null){
-            printErrorMsg("Unrecognized parking ticket.");
-        }
-        carTicketCarHashMap.remove(parkingTicket);
-        return car;
+    public void countUsedParkingSpace(){
+        this.usedParkingSpace++;
     }
-
-    private void printErrorMsg(String s) {
-        System.out.print(s);
-    }
-
 }
