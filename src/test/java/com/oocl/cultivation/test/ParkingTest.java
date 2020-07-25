@@ -47,6 +47,7 @@ class ParkingTest {
         Car fetchCar = parkingLot.fetch(parkingTicket);
 
         //then
+        Assertions.assertNotNull(fetchCar);
         Assertions.assertEquals(parkingCar,fetchCar);
     }
 
