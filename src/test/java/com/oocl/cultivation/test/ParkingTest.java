@@ -106,7 +106,7 @@ class ParkingTest {
     }
 
     @Test
-    void should_fetch_null_when_fetch_given_no_ticket() {
+    void should_print_error_msg_when_fetch_given_no_ticket() {
         //given
         Car car = new Car("A001");
         ParkingLot parkingLot = new ParkingLot();
@@ -116,7 +116,7 @@ class ParkingTest {
         Car fetchCar = parkingLot.fetch(null);
 
         //then
-        Assertions.assertNull(fetchCar);
+        Assertions.assertEquals("Please provide your parking ticket.",systemOut());
     }
 
     @Test
