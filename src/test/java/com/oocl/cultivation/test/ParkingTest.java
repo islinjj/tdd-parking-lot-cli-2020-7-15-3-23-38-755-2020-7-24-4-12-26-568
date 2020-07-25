@@ -101,4 +101,17 @@ class ParkingTest {
         //then
         Assertions.assertNull(fetchCar);
     }
+
+    @Test
+    void should_return_null_when_fetch_given_wrong_ticket() {
+        //given
+        ParkingLot parkingLot = new ParkingLot();
+        CarTicket wrongParkingTicket = new CarTicket("xxxx");
+
+        //when
+        Car fetchCar = parkingLot.fetch(wrongParkingTicket);
+
+        //then
+        Assertions.assertNull(fetchCar);
+    }
 }
