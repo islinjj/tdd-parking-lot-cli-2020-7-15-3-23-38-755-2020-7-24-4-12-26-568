@@ -129,4 +129,20 @@ class ParkingTest {
         Assertions.assertNotNull(fetchCar);
         Assertions.assertNull(fetchSameCarAgain);
     }
+
+    @Test
+    void should_return_null_parking_ticket_when_park_with_no_position_given_cars_and_capacity() {
+        //given
+        ParkingLot parkingLot = new ParkingLot();
+        int capacity = 10;
+        for (int i = 1; i <= capacity; i++){
+            parkingLot.park(new Car("A00" + Integer.valueOf(i)));
+        }
+
+        //when
+        CarTicket parkingTicket = parkingLot.park(new Car("A0011"));
+
+        //then
+        Assertions.assertNull(parkingTicket);
+    }
 }
