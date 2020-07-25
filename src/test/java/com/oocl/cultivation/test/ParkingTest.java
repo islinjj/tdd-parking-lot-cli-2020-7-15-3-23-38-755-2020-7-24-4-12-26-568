@@ -1,14 +1,14 @@
 package com.oocl.cultivation.test;
 
-import com.oocl.cultivation.Car;
-import com.oocl.cultivation.ParkingLot;
-import com.oocl.cultivation.CarTicket;
+import com.oocl.cultivation.*;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
+import java.util.ArrayList;
+import java.util.List;
 
 class ParkingTest {
 
@@ -222,4 +222,22 @@ class ParkingTest {
         Assertions.assertEquals("Not enough position.",systemOut());
     }
 
+    @Test
+    void should_parking_lot_one_has_9_cars_and_parking_lot_two_has_0_cars_when_park_given_9_cars_and_two_parking_lots() {
+        //given
+        int carsAmount = 9;
+        List<ParkingLot> parkingLotList = new ArrayList<>();
+        ParkingLot parkingLotOne = new ParkingLot();
+        ParkingLot parkingLotTwo = new ParkingLot();
+        parkingLotList.add(parkingLotOne);
+        parkingLotList.add(parkingLotTwo);
+        ParkingBoy parkingBoy = new ParkingBoy(parkingLotList);
+
+        //given
+        parkingBoy.park(parkingLotList,carsAmount);
+
+        //when
+        Assertions.assertEquals(9,parkingLotOne.getUsedParkingSpace());
+        Assertions.assertEquals(0,parkingLotTwo.getUsedParkingSpace());
+    }
 }
