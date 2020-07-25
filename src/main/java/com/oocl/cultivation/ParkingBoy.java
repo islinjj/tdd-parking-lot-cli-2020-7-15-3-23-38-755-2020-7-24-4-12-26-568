@@ -5,8 +5,8 @@ import java.util.List;
 import java.util.Map;
 
 public class ParkingBoy {
-    private List<ParkingLot> parkingLotList;
-    private Map<CarTicket,Car> carTicketCarHashMap = new HashMap<>();
+    protected List<ParkingLot> parkingLotList;
+    protected Map<CarTicket,Car> carTicketCarHashMap = new HashMap<>();
 
     public ParkingBoy(List<ParkingLot> parkingLotList) {
         this.parkingLotList = parkingLotList;

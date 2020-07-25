@@ -1,16 +1,24 @@
 package com.oocl.cultivation;
 
+import java.util.IntSummaryStatistics;
 import java.util.List;
 
-public class SmartParkingBoy {
-    private List<ParkingLot> parkingLotList;
+public class SmartParkingBoy extends ParkingBoy{
 
     public SmartParkingBoy(List<ParkingLot> parkingLotList) {
-        this.parkingLotList = parkingLotList;
+        super(parkingLotList);
     }
 
-    public void park(Car car) {
-       parkingLotList.get(0).setUsedParkingPosition(6);
-       parkingLotList.get(1).setUsedParkingPosition(5);
+    @Override
+    public CarTicket park(Car car){
+        IntSummaryStatistics intSummaryStatistics = super.parkingLotList.stream().mapToInt((x) -> x.getUsedParkingPosition()).summaryStatistics();//TODO:how to return ParkingLot Object
+        for (ParkingLot parkingLot : parkingLotList){
+            if (parkingLot.getUsedParkingPosition() == intSummaryStatistics.getMin()){
+                super.carTicketCarHashMap.put(new CarTicket(car.getCarId()),car);
+                parkingLot.countCapacity();
+                parkingLot.countUsedParkingPosition();
+            }
+        }
+        return null;
     }
 }
