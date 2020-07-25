@@ -12,12 +12,12 @@ public class ParkingLot {
     private Map<CarTicket,Car> parkedCarts = new HashMap<>();
 
     public CarTicket park(Car car) {
-        CarTicket carTicket = new CarTicket(car.getCarId());
-        parkedCarts.put(carTicket,car);
-        return carTicket;
+        CarTicket parkingTicket = new CarTicket(car.getCarId());
+        parkedCarts.put(parkingTicket,car);
+        return parkingTicket;
     }
 
-    public Car fetch(CarTicket ticket) {
-        return parkedCarts.get(ticket);
+    public Car fetch(CarTicket parkingTicket) {
+        return parkedCarts.get(parkingTicket);
     }
 }
