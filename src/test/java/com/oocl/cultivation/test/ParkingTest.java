@@ -231,7 +231,7 @@ class ParkingTest {
         ParkingLot parkingLotTwo = new ParkingLot();
         parkingLotList.add(parkingLotOne);
         parkingLotList.add(parkingLotTwo);
-        ParkingBoy parkingBoy = new ParkingBoy(parkingLotList);
+        ParkingBoy parkingBoy = new ParkingBoy();
 
         //given
         parkingBoy.park(parkingLotList,carsAmount);
