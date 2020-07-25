@@ -12,6 +12,10 @@ public class ParkingLot {
     private int capacity = 10;
     private int usedParkingPosition = 0;
 
+    public void setUsedParkingPosition(int usedParkingPosition) {
+        this.usedParkingPosition = usedParkingPosition;
+    }
+
     public int getCapacity() {
         return this.capacity;
     }
