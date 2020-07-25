@@ -233,13 +233,36 @@ class ParkingTest {
         parkingLotList.add(parkingLotTwo);
         ParkingBoy parkingBoy = new ParkingBoy(parkingLotList);
 
-        // given
+        // when
         for (int i = 0; i < carsAmount; i++) {
             parkingBoy.park(new Car("A00"+Integer.valueOf(i)));
         }
 
-        //when
+        //then
         Assertions.assertEquals(9,parkingLotOne.getUsedParkingSpace());
         Assertions.assertEquals(0,parkingLotTwo.getUsedParkingSpace());
+    }
+
+    @Test
+    void should_parking_lot_one_has_10_cars_and_parking_lot_two_has_1_cars_when_park_given_11_cars_and_two_parking_lots() {
+        //given
+        int carsAmount = 11;
+        List<ParkingLot> parkingLotList = new ArrayList<>();
+        ParkingLot parkingLotOne = new ParkingLot();
+        ParkingLot parkingLotTwo = new ParkingLot();
+        parkingLotList.add(parkingLotOne);
+        parkingLotList.add(parkingLotTwo);
+        ParkingBoy parkingBoy = new ParkingBoy(parkingLotList);
+
+        //when
+        // when
+        for (int i = 0; i < carsAmount; i++) {
+            parkingBoy.park(new Car("A00"+Integer.valueOf(i)));
+        }
+
+        //then
+        Assertions.assertEquals(10,parkingLotOne.getUsedParkingSpace());
+        Assertions.assertEquals(1,parkingLotTwo.getUsedParkingSpace());
+
     }
 }
