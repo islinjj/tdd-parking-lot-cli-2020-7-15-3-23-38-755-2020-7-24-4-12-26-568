@@ -65,6 +65,8 @@ class ParkingTest {
         Car fetchCarTwo = parkingLot.fetch(parkingTicketTwo);
 
         //then
+        Assertions.assertNotNull(fetchCarOne);
+        Assertions.assertNotNull(fetchCarTwo);
         Assertions.assertEquals(parkingCarOne,fetchCarOne);
         Assertions.assertEquals(parkingCarTwo,fetchCarTwo);
     }
