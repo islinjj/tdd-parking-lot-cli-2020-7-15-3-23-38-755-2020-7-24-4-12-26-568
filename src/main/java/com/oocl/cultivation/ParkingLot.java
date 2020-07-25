@@ -22,14 +22,13 @@ public class ParkingLot {
     }
 
     public Car fetch(CarTicket parkingTicket) {
+        Car car = parkedCars.get(parkingTicket);
         if (parkingTicket == null){
             System.out.print("Please provide your parking ticket.");
             return null;
         }
-        Car car = parkedCars.get(parkingTicket);
         if (car == null){
             System.out.print("Unrecognized parking ticket.");
-            return null;
         }
         parkedCars.remove(parkingTicket);
         return car;
