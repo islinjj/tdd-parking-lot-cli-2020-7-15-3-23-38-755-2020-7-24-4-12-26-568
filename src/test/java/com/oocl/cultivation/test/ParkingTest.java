@@ -22,6 +22,21 @@ class ParkingTest {
     }
 
     @Test
+    void should_return_2_parking_ticket_when_park_given_two_car() {
+        //given
+        Car parkingCarOne = new Car("A001");
+        Car parkingCarTwo = new Car("A002");
+        ParkingLot parkingLot = new ParkingLot();
+
+        //when
+        CarTicket parkingTicketOne = parkingLot.park(parkingCarOne);
+        CarTicket parkingTicketTwo = parkingLot.park(parkingCarTwo);
+
+        Assertions.assertNotNull(parkingTicketOne);
+        Assertions.assertNotNull(parkingTicketTwo);
+    }
+
+    @Test
     void should_fetch_a_car_when_fetch_given_a_correct_parking_ticket() {
         //given
         Car parkingCar = new Car("A001");
@@ -52,4 +67,5 @@ class ParkingTest {
         Assertions.assertEquals(parkingCarOne,fetchCarOne);
         Assertions.assertEquals(parkingCarTwo,fetchCarTwo);
     }
+
 }
