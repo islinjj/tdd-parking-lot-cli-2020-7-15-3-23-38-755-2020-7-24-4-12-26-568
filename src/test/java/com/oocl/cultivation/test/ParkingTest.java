@@ -71,4 +71,20 @@ class ParkingTest {
         Assertions.assertEquals(parkingCarTwo,fetchCarTwo);
     }
 
+    @Test
+    void should_fetch_a_correct_car_when_park_2_car_given_2_car() {
+        //given
+        Car parkingCarOne = new Car("A001");
+        Car parkingCarTwo = new Car("A002");
+        ParkingLot parkingLot = new ParkingLot();
+        CarTicket parkingTicketOne = parkingLot.park(parkingCarOne);
+        CarTicket parkingTicketTwo = parkingLot.park(parkingCarTwo);
+
+        //when
+        Car fetchCarOne = parkingLot.fetch(parkingTicketOne);
+
+        //then
+        Assertions.assertNotNull(fetchCarOne);
+        Assertions.assertEquals(parkingCarOne,fetchCarOne);
+    }
 }
