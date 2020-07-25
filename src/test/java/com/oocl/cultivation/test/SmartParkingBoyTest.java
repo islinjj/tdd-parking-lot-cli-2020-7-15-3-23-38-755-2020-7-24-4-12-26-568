@@ -21,7 +21,7 @@ public class SmartParkingBoyTest {
         parkingLotTwo.setUsedParkingPosition(4);
         parkingLotList.add(parkingLotOne);
         parkingLotList.add(parkingLotTwo);
-        SmartParkingBoy smartParkingBoy = new SmartParkingBoy();
+        SmartParkingBoy smartParkingBoy = new SmartParkingBoy(parkingLotList);
         Car car = new Car("A001");
 
         //when
