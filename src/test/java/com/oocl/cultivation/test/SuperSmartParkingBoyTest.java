@@ -277,4 +277,25 @@ public class SuperSmartParkingBoyTest {
         //then
         Assertions.assertEquals("Not enough position.",systemOut());
     }
+
+    @Test
+    void should_return_parking_lot_one_add_1_car_when_park_given_1_car_and_same_available_position_rate_parking_lot() {
+        //given
+        Car car = new Car("A001");
+        List<ParkingLot> parkingLotList = new ArrayList<>();
+        ParkingLot parkingLotOne = new ParkingLot();
+        ParkingLot parkingLotTwo = new ParkingLot();
+        parkingLotOne.setUsedParkingPosition(3);
+        parkingLotTwo.setUsedParkingPosition(3);
+        parkingLotList.add(parkingLotOne);
+        parkingLotList.add(parkingLotTwo);
+        SuperSmartParkingBoy superSmartParkingBoy = new SuperSmartParkingBoy(parkingLotList);
+
+        //when
+        superSmartParkingBoy.park(car);
+
+        //then
+        Assertions.assertEquals(4,parkingLotOne.getUsedParkingPosition());
+        Assertions.assertEquals(3,parkingLotTwo.getUsedParkingPosition());
+    }
 }
