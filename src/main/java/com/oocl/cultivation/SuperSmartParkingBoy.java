@@ -11,7 +11,7 @@ public class SuperSmartParkingBoy {
 
     public CarTicket park(Car car) {
         if (car != null){
-
+            return new CarTicket(car.getCarId());
         }
         return null;
     }
