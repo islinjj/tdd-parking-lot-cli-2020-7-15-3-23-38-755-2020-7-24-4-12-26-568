@@ -6,9 +6,15 @@ package com.oocl.cultivation;
  * @Version 1.0
  */
 public class CarTicket {
+
     private String ticketId;
 
+    public String getTicketId() {
+        return ticketId;
+    }
     public CarTicket(String carId) {
         this.ticketId = carId;
     }
+
+
 }
