@@ -30,8 +30,7 @@ public class SuperSmartParkingBoy extends ParkingBoy{
             if (parkingLot.getCapacity() == 0){
                 continue;
             }else {
-                int rate = (parkingLot.getCapacity()-parkingLot.getUsedParkingPosition()) % parkingLot.getCapacity();
-                if (parkingLotAvailableRateStatistics.getMax() == rate){
+                if (isHigherAvailableRate(parkingLotAvailableRateStatistics, parkingLot)){
                     CarTicket parkingTicket = new CarTicket(car.getCarId());
                     carTicketCarHashMap.put(parkingTicket,car);
                     parkingLot.countUsedParkingPosition();
@@ -42,4 +41,11 @@ public class SuperSmartParkingBoy extends ParkingBoy{
         }
         return null;
     }
+
+    private boolean isHigherAvailableRate(IntSummaryStatistics parkingLotAvailableRateStatistics, ParkingLot parkingLot) {
+        int rate = (parkingLot.getCapacity()-parkingLot.getUsedParkingPosition()) % parkingLot.getCapacity();
+        return parkingLotAvailableRateStatistics.getMax() == rate;
+    }
+
+
 }
