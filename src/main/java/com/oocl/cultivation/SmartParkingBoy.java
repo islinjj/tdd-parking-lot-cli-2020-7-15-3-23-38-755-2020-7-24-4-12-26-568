@@ -11,15 +11,14 @@ public class SmartParkingBoy extends ParkingBoy{
 
     @Override
     public CarTicket park(Car car){
-        if (car == null){
-            return null;
-        }
-        IntSummaryStatistics parkingLotUsedPositionStatistics = super.parkingLotList.stream().mapToInt((x) -> x.getUsedParkingPosition()).summaryStatistics();//TODO:how to return ParkingLot Object
-        if (parkingLotUsedPositionStatistics.getMax() != 10){
-            CarTicket carTicket = getCarTicket(car, parkingLotUsedPositionStatistics);
-            if (carTicket != null) return carTicket;
-        } else {
-            System.out.print("Not enough position.");
+        if (car != null){
+            IntSummaryStatistics parkingLotUsedPositionStatistics = super.parkingLotList.stream().mapToInt((x) -> x.getUsedParkingPosition()).summaryStatistics();//TODO:how to return ParkingLot Object
+            if (parkingLotUsedPositionStatistics.getMax() != 10){
+                CarTicket carTicket = getCarTicket(car, parkingLotUsedPositionStatistics);
+                if (carTicket != null) return carTicket;
+            } else {
+                System.out.print("Not enough position.");
+            }
         }
         return null;
     }
