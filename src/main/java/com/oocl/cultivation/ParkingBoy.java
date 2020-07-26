@@ -26,7 +26,7 @@ public class ParkingBoy {
         return null;
     }
 
-    private CarTicket getCarTicket(Car car) {
+    CarTicket getCarTicket(Car car) {
         for (ParkingLot parkingLot : parkingLotList) {
             if (parkingLot.getCapacity() == 0){
                 continue;
@@ -54,7 +54,7 @@ public class ParkingBoy {
         return car;
     }
 
-    private boolean isAllParkingLotFull() {
+    boolean isAllParkingLotFull() {
         IntSummaryStatistics parkingLotUsedPositionStatistics = parkingLotList.stream().mapToInt((x) -> x.getUsedParkingPosition()).summaryStatistics();//TODO:how to return ParkingLot Object
         return parkingLotUsedPositionStatistics.getMin() == 10;
     }
