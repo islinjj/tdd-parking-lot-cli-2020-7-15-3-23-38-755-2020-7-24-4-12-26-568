@@ -15,8 +15,14 @@ public class SmartParkingBoy extends ParkingBoy{
             return null;
         }
         IntSummaryStatistics intSummaryStatistics = super.parkingLotList.stream().mapToInt((x) -> x.getUsedParkingPosition()).summaryStatistics();//TODO:how to return ParkingLot Object
+        CarTicket carTicket = getCarTicket(car, intSummaryStatistics);
+        if (carTicket != null) return carTicket;
+        return null;
+    }
+
+    private CarTicket getCarTicket(Car car, IntSummaryStatistics intSummaryStatistics) {
         for (ParkingLot parkingLot : parkingLotList){
-            if (parkingLot.getUsedParkingPosition() == intSummaryStatistics.getMin()){
+            if (isParkingLotHasMinUsedPosition(intSummaryStatistics, parkingLot)){
                 CarTicket carTicket = new CarTicket(car.getCarId());
                 super.carTicketCarHashMap.put(carTicket,car);
                 parkingLot.countCapacity();
@@ -25,5 +31,9 @@ public class SmartParkingBoy extends ParkingBoy{
             }
         }
         return null;
+    }
+
+    private boolean isParkingLotHasMinUsedPosition(IntSummaryStatistics intSummaryStatistics, ParkingLot parkingLot) {
+        return parkingLot.getUsedParkingPosition() == intSummaryStatistics.getMin();
     }
 }
