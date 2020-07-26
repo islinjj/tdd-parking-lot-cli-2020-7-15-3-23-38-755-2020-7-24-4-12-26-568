@@ -47,5 +47,4 @@ public class SuperSmartParkingBoy extends ParkingBoy{
         return parkingLotAvailableRateStatistics.getMax() == rate;
     }
 
-
 }

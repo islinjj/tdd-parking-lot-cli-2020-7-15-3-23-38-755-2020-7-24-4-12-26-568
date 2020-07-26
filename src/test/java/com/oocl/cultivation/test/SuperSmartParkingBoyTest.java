@@ -300,7 +300,7 @@ public class SuperSmartParkingBoyTest {
     }
 
     @Test
-    void should_return_parking_lot_two_add_car_one_and_parking_lot_two_add_car_two_when_park_given_2_car_and_higher_available_position_rate_parking_lot_two() {
+    void should_return_parking_lot_two_7_cars_and_parking_lot_5_cars_when_park_given_2_car_and_higher_available_position_rate_parking_lot_two() {
         //given
         Car carOne = new Car("A001");
         Car carTwo = new Car("A002");
