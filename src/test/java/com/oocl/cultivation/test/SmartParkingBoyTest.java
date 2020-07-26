@@ -95,4 +95,22 @@ public class SmartParkingBoyTest {
         //then
         Assertions.assertNull(fetchCar);
     }
+
+    @Test
+    void should_fetch_1_car_when_fetch_given_1_correct_parking_ticket() {
+        //given
+        Car car = new Car("A001");
+        List<ParkingLot> parkingLotList = new ArrayList<>();
+        ParkingLot parkingLot = new ParkingLot();
+        parkingLotList.add(parkingLot);
+        SmartParkingBoy smartParkingBoy = new SmartParkingBoy(parkingLotList);
+        CarTicket parkingTicket = smartParkingBoy.park(car);
+
+        //when
+        Car fetchCar = smartParkingBoy.fetch(parkingTicket);
+
+        //then
+        Assertions.assertNotNull(fetchCar);
+        Assertions.assertEquals(car,fetchCar);
+    }
 }
