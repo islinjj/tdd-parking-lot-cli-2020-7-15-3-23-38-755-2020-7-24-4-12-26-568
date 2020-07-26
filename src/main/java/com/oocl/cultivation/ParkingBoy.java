@@ -13,7 +13,7 @@ public class ParkingBoy {
     }
 
     public CarTicket park(Car car) {
-        if (!isAllParkingLotFull()){
+        if (car != null && !isAllParkingLotFull()){
             CarTicket carTicket = getCarTicket(car);
             if (carTicket != null)
                 return carTicket;
