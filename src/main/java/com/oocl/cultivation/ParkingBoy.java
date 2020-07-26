@@ -55,11 +55,11 @@ public class ParkingBoy {
         return car;
     }
 
-    boolean isAllParkingLotFull(IntSummaryStatistics parkingLotUsedPositionStatistics) {
+    protected boolean isAllParkingLotFull(IntSummaryStatistics parkingLotUsedPositionStatistics) {
         return parkingLotUsedPositionStatistics.getMin() == 10;
     }
 
-    private void printErrorMsg(String s) {
+    protected void printErrorMsg(String s) {
         System.out.print(s);
     }
 }
