@@ -14,17 +14,17 @@ public class SmartParkingBoy extends ParkingBoy{
         if (car == null){
             return null;
         }
-        IntSummaryStatistics intSummaryStatistics = super.parkingLotList.stream().mapToInt((x) -> x.getUsedParkingPosition()).summaryStatistics();//TODO:how to return ParkingLot Object
-        if (intSummaryStatistics.getMax() != 10){
-            CarTicket carTicket = getCarTicket(car, intSummaryStatistics);
+        IntSummaryStatistics parkingLotUsedPositionStatistics = super.parkingLotList.stream().mapToInt((x) -> x.getUsedParkingPosition()).summaryStatistics();//TODO:how to return ParkingLot Object
+        if (parkingLotUsedPositionStatistics.getMax() != 10){
+            CarTicket carTicket = getCarTicket(car, parkingLotUsedPositionStatistics);
             if (carTicket != null) return carTicket;
         }
         return null;
     }
 
-    private CarTicket getCarTicket(Car car, IntSummaryStatistics intSummaryStatistics) {
+    private CarTicket getCarTicket(Car car, IntSummaryStatistics parkingLotUsedPositionStatistics) {
         for (ParkingLot parkingLot : parkingLotList){
-            if (isParkingLotHasMinUsedPosition(intSummaryStatistics, parkingLot)){
+            if (isParkingLotHasMinUsedPosition(parkingLotUsedPositionStatistics, parkingLot)){
                 CarTicket carTicket = new CarTicket(car.getCarId());
                 super.carTicketCarHashMap.put(carTicket,car);
                 parkingLot.countCapacity();
