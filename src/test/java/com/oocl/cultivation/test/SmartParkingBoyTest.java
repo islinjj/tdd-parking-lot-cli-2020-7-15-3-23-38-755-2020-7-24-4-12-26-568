@@ -2,12 +2,27 @@ package com.oocl.cultivation.test;
 
 import com.oocl.cultivation.*;
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.io.ByteArrayOutputStream;
+import java.io.PrintStream;
 import java.util.ArrayList;
 import java.util.List;
 
 public class SmartParkingBoyTest {
+
+
+    private ByteArrayOutputStream outContent = new ByteArrayOutputStream();
+
+    @BeforeEach
+    public void setup() {
+        System.setOut(new PrintStream(outContent));
+    }
+
+    public String systemOut() {
+        return outContent.toString();
+    }
 
     @Test
     void should_return_parking_lot_two_has_5_cars_when_park_given_parking_lot_one_has_more_car_and_1_car() {
@@ -137,7 +152,6 @@ public class SmartParkingBoyTest {
         Assertions.assertEquals(carTwo,fetchCarTwo);
     }
 
-
     @Test
     void should_fetch_1_correct_car_when_fetch_1_car_from_2_cars_given_2_cars() {
         //given
@@ -156,5 +170,23 @@ public class SmartParkingBoyTest {
         //then
         Assertions.assertNotNull(fetchCarOne);
         Assertions.assertEquals(carOne,fetchCarOne);
+    }
+
+
+    @Test
+    void should_print_error_msg_when_fetch_given_no_ticket() {
+        //given
+        Car car = new Car("A001");
+        List<ParkingLot> parkingLotList = new ArrayList<>();
+        ParkingLot parkingLot = new ParkingLot();
+        parkingLotList.add(parkingLot);
+        SmartParkingBoy smartParkingBoy = new SmartParkingBoy(parkingLotList);
+        smartParkingBoy.park(car);
+
+        //when
+        smartParkingBoy.fetch(null);
+
+        //then
+        Assertions.assertEquals("Please provide your parking ticket.",systemOut());
     }
 }
