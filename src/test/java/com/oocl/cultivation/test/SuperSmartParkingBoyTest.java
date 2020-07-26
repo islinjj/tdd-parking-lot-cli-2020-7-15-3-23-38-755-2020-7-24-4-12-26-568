@@ -298,4 +298,27 @@ public class SuperSmartParkingBoyTest {
         Assertions.assertEquals(4,parkingLotOne.getUsedParkingPosition());
         Assertions.assertEquals(3,parkingLotTwo.getUsedParkingPosition());
     }
+
+    @Test
+    void should_return_parking_lot_two_add_car_one_and_parking_lot_two_add_car_two_when_park_given_2_car_and_higher_available_position_rate_parking_lot_two() {
+        //given
+        Car carOne = new Car("A001");
+        Car carTwo = new Car("A002");
+        ParkingLot parkingLotOne = new ParkingLot();
+        ParkingLot parkingLotTwo = new ParkingLot();
+        parkingLotOne.setUsedParkingPosition(6);
+        parkingLotTwo.setUsedParkingPosition(4);
+        List<ParkingLot> parkingLotList = new ArrayList<>();
+        parkingLotList.add(parkingLotOne);
+        parkingLotList.add(parkingLotTwo);
+        SuperSmartParkingBoy superSmartParkingBoy = new SuperSmartParkingBoy(parkingLotList);
+
+        //when
+        superSmartParkingBoy.park(carOne);
+        superSmartParkingBoy.park(carTwo);
+
+        //then
+        Assertions.assertEquals(7,parkingLotOne.getUsedParkingPosition());
+        Assertions.assertEquals(5,parkingLotTwo.getUsedParkingPosition());
+    }
 }
