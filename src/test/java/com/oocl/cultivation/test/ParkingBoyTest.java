@@ -317,4 +317,25 @@ class ParkingBoyTest {
         Assertions.assertEquals(10,parkingLotOne.getUsedParkingPosition());
         Assertions.assertEquals(1,parkingLotTwo.getUsedParkingPosition());
     }
+
+    @Test
+    void should_print_empty_when_parking_lot_has_position_given_two_parking_lot_and_11_cars() {
+        //given
+        int carsAmount = 11;
+        List<ParkingLot> parkingLotList = new ArrayList<>();
+        ParkingLot parkingLotOne = new ParkingLot();
+        ParkingLot parkingLotTwo = new ParkingLot();
+        parkingLotList.add(parkingLotOne);
+        parkingLotList.add(parkingLotTwo);
+        ParkingBoy parkingBoy = new ParkingBoy(parkingLotList);
+
+        //when
+        // when
+        for (int i = 0; i < carsAmount; i++) {
+            parkingBoy.park(new Car("A00"+i));
+        }
+
+        //then
+        Assertions.assertEquals("",systemOut());
+    }
 }
