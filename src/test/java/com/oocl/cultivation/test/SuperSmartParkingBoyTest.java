@@ -38,6 +38,7 @@ public class SuperSmartParkingBoyTest {
 
         //then
         Assertions.assertNotNull(parkingTicket);
+        Assertions.assertEquals(carId,parkingTicket.getTicketId());
     }
 
 }
