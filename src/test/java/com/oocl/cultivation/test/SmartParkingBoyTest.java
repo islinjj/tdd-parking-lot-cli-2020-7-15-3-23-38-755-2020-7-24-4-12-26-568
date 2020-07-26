@@ -31,6 +31,20 @@ public class SmartParkingBoyTest {
     }
 
     @Test
+    void should_return_null_parking_ticket_when_park_given_null_car() {
+        //given
+        List<ParkingLot> parkingLotList = new ArrayList<>();
+        parkingLotList.add(new ParkingLot());
+        SmartParkingBoy smartParkingBoy = new SmartParkingBoy(parkingLotList);
+
+        //when
+        CarTicket carTicket = smartParkingBoy.park(null);
+
+        //then
+        Assertions.assertNull(carTicket);
+    }
+
+    @Test
     void should_return_parking_ticket_when_park_given_1_car() {
         //given
         String carId = "A001";
@@ -64,4 +78,5 @@ public class SmartParkingBoyTest {
         Assertions.assertNotNull(parkingTicketOne);
         Assertions.assertNotNull(parkingTicketTwo);
     }
+
 }
