@@ -15,7 +15,8 @@ public class ParkingBoy {
 
     public CarTicket park(Car car) {
         if (car != null){
-            if (isAllParkingLotFull()){
+            IntSummaryStatistics parkingLotUsedPositionStatistics = parkingLotList.stream().mapToInt((x) -> x.getUsedParkingPosition()).summaryStatistics();//TODO:how to return ParkingLot Object
+            if (isAllParkingLotFull(parkingLotUsedPositionStatistics)){
                 System.out.print("Not enough position.");
             }else {
                 CarTicket carTicket = getCarTicket(car);
@@ -54,8 +55,7 @@ public class ParkingBoy {
         return car;
     }
 
-    boolean isAllParkingLotFull() {
-        IntSummaryStatistics parkingLotUsedPositionStatistics = parkingLotList.stream().mapToInt((x) -> x.getUsedParkingPosition()).summaryStatistics();//TODO:how to return ParkingLot Object
+    boolean isAllParkingLotFull(IntSummaryStatistics parkingLotUsedPositionStatistics) {
         return parkingLotUsedPositionStatistics.getMin() == 10;
     }
 

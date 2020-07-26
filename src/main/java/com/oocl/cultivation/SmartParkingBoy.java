@@ -13,7 +13,7 @@ public class SmartParkingBoy extends ParkingBoy{
     public CarTicket park(Car car){
         if (car != null){
             IntSummaryStatistics parkingLotUsedPositionStatistics = parkingLotList.stream().mapToInt((x) -> x.getUsedParkingPosition()).summaryStatistics();//TODO:how to return ParkingLot Object
-            if (!isAllParkingLotFull(parkingLotUsedPositionStatistics)){
+            if (!super.isAllParkingLotFull(parkingLotUsedPositionStatistics)){
                 CarTicket carTicket = getCarTicket(car, parkingLotUsedPositionStatistics);
                 if (carTicket != null) return carTicket;
             } else {
@@ -21,10 +21,6 @@ public class SmartParkingBoy extends ParkingBoy{
             }
         }
         return null;
-    }
-
-    private boolean isAllParkingLotFull(IntSummaryStatistics parkingLotUsedPositionStatistics) {
-        return parkingLotUsedPositionStatistics.getMin() == 10;
     }
 
     private CarTicket getCarTicket(Car car, IntSummaryStatistics parkingLotUsedPositionStatistics) {
