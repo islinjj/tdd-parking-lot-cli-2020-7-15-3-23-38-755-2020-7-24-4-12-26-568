@@ -78,27 +78,4 @@ public class SuperSmartParkingBoyTest {
         Assertions.assertNotNull(fetchCar);
         Assertions.assertEquals(car,fetchCar);
     }
-
-    @Test
-    void should_fetch_2_cars_when_fetch_given_2_correct_parking_tickets() {
-        //given
-        Car carOne = new Car("A001");
-        Car carTwo = new Car("A002");
-        List<ParkingLot> parkingLotList = new ArrayList<>();
-        ParkingLot parkingLot = new ParkingLot();
-        parkingLotList.add(parkingLot);
-        ParkingBoy parkingBoy = new ParkingBoy(parkingLotList);
-        CarTicket parkingTicketOne = parkingBoy.park(carOne);
-        CarTicket parkingTicketTwo = parkingBoy.park(carTwo);
-
-        //when
-        Car fetchCarOne = parkingBoy.fetch(parkingTicketOne);
-        Car fetchCarTwo = parkingBoy.fetch(parkingTicketTwo);
-
-        //then
-        Assertions.assertNotNull(fetchCarOne);
-        Assertions.assertNotNull(fetchCarTwo);
-        Assertions.assertEquals(carOne,fetchCarOne);
-        Assertions.assertEquals(carTwo,fetchCarTwo);
-    }
 }
