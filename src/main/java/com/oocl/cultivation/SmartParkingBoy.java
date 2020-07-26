@@ -15,8 +15,10 @@ public class SmartParkingBoy extends ParkingBoy{
             return null;
         }
         IntSummaryStatistics intSummaryStatistics = super.parkingLotList.stream().mapToInt((x) -> x.getUsedParkingPosition()).summaryStatistics();//TODO:how to return ParkingLot Object
-        CarTicket carTicket = getCarTicket(car, intSummaryStatistics);
-        if (carTicket != null) return carTicket;
+        if (intSummaryStatistics.getMax() != 10){
+            CarTicket carTicket = getCarTicket(car, intSummaryStatistics);
+            if (carTicket != null) return carTicket;
+        }
         return null;
     }
 
