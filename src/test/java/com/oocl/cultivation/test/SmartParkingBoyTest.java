@@ -172,7 +172,6 @@ public class SmartParkingBoyTest {
         Assertions.assertEquals(carOne,fetchCarOne);
     }
 
-
     @Test
     void should_print_error_msg_when_fetch_given_no_ticket() {
         //given
@@ -188,5 +187,22 @@ public class SmartParkingBoyTest {
 
         //then
         Assertions.assertEquals("Please provide your parking ticket.",systemOut());
+    }
+
+    @Test
+    void should_fetch_null_when_fetch_given_wrong_ticket() {
+        // given
+        List<ParkingLot> parkingLotList = new ArrayList<>();
+        ParkingLot parkingLot = new ParkingLot();
+        parkingLotList.add(parkingLot);
+        SmartParkingBoy smartParkingBoy = new SmartParkingBoy(parkingLotList);
+        CarTicket wrongParkingTicket = new CarTicket("xxxx");
+
+        // when
+        //when
+        Car fetchCar = smartParkingBoy.fetch(wrongParkingTicket);
+
+        // then
+        Assertions.assertNull(fetchCar);
     }
 }
