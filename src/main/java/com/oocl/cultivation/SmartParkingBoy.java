@@ -18,6 +18,8 @@ public class SmartParkingBoy extends ParkingBoy{
         if (parkingLotUsedPositionStatistics.getMax() != 10){
             CarTicket carTicket = getCarTicket(car, parkingLotUsedPositionStatistics);
             if (carTicket != null) return carTicket;
+        } else {
+            System.out.print("Not enough position.");
         }
         return null;
     }
