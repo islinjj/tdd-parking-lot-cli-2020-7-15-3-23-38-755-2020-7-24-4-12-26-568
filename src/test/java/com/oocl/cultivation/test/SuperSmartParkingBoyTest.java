@@ -23,4 +23,21 @@ public class SuperSmartParkingBoyTest {
         Assertions.assertNull(carTicket);
     }
 
+    @Test
+    void should_return_parking_ticket_when_park_given_1_car() {
+        //given
+        String carId = "A001";
+        Car car = new Car(carId);
+        List<ParkingLot> parkingLotList = new ArrayList<>();
+        ParkingLot parkingLot = new ParkingLot();
+        parkingLotList.add(parkingLot);
+        SuperSmartParkingBoy superSmartParkingBoy = new SuperSmartParkingBoy(parkingLotList);
+
+        //when
+        CarTicket parkingTicket = superSmartParkingBoy.park(car);
+
+        //then
+        Assertions.assertNotNull(parkingTicket);
+    }
+
 }
