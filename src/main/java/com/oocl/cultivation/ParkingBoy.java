@@ -1,6 +1,7 @@
 package com.oocl.cultivation;
 
 import java.util.HashMap;
+import java.util.IntSummaryStatistics;
 import java.util.List;
 import java.util.Map;
 
@@ -52,14 +53,8 @@ public class ParkingBoy {
     }
 
     private boolean isAllParkingLotFull() {
-        boolean isAllParkingLotFull = true;
-        for (ParkingLot parkingLot : parkingLotList) {
-            if (parkingLot.getCapacity() != 0){
-                isAllParkingLotFull = false;
-                break;
-            }
-        }
-        return isAllParkingLotFull;
+        IntSummaryStatistics parkingLotUsedPositionStatistics = parkingLotList.stream().mapToInt((x) -> x.getUsedParkingPosition()).summaryStatistics();//TODO:how to return ParkingLot Object
+        return parkingLotUsedPositionStatistics.getMin() == 10;
     }
 
     private void printErrorMsg(String s) {
