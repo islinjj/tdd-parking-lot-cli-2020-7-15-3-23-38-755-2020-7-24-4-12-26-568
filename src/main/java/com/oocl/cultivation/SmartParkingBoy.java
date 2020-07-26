@@ -11,6 +11,9 @@ public class SmartParkingBoy extends ParkingBoy{
 
     @Override
     public CarTicket park(Car car){
+        if (car == null){
+            return null;
+        }
         IntSummaryStatistics intSummaryStatistics = super.parkingLotList.stream().mapToInt((x) -> x.getUsedParkingPosition()).summaryStatistics();//TODO:how to return ParkingLot Object
         for (ParkingLot parkingLot : parkingLotList){
             if (parkingLot.getUsedParkingPosition() == intSummaryStatistics.getMin()){
