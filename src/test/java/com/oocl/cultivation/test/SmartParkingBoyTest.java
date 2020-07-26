@@ -79,4 +79,20 @@ public class SmartParkingBoyTest {
         Assertions.assertNotNull(parkingTicketTwo);
     }
 
+    @Test
+    void should_fetch_null_when_fetch_given_no_ticket() {
+        //given
+        Car car = new Car("A001");
+        List<ParkingLot> parkingLotList = new ArrayList<>();
+        ParkingLot parkingLot = new ParkingLot();
+        parkingLotList.add(parkingLot);
+        SmartParkingBoy smartParkingBoy = new SmartParkingBoy(parkingLotList);
+        smartParkingBoy.park(car);
+
+        //when
+        Car fetchCar = smartParkingBoy.fetch(null);
+
+        //then
+        Assertions.assertNull(fetchCar);
+    }
 }
