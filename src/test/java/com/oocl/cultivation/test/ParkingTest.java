@@ -23,6 +23,19 @@ class ParkingTest {
         return outContent.toString();
     }
 
+    @Test
+    void should_return_null_parking_ticket_when_park_given_null_car() {
+        //given
+        List<ParkingLot> parkingLotList = new ArrayList<>();
+        parkingLotList.add(new ParkingLot());
+        ParkingBoy parkingBoy = new ParkingBoy(parkingLotList);
+
+        //when
+        CarTicket carTicket = parkingBoy.park(null);
+
+        //then
+        Assertions.assertNull(carTicket);
+    }
 
     @Test
     void should_return_parking_ticket_when_park_given_1_car() {
