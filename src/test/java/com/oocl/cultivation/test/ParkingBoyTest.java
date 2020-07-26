@@ -276,7 +276,7 @@ class ParkingBoyTest {
     }
 
     @Test
-    void should_parking_lot_one_has_9_cars_and_parking_lot_two_has_0_cars_when_park_given_9_cars_and_two_parking_lots() {
+    void should_return_parking_lot_one_has_9_cars_and_parking_lot_two_has_0_cars_when_park_given_9_cars_and_two_parking_lots() {
         //given
         int carsAmount = 9;
         List<ParkingLot> parkingLotList = new ArrayList<>();
@@ -297,7 +297,7 @@ class ParkingBoyTest {
     }
 
     @Test
-    void should_parking_lot_one_has_10_cars_and_parking_lot_two_has_1_cars_when_park_given_11_cars_and_two_parking_lots() {
+    void should_return_parking_lot_one_has_10_cars_and_parking_lot_two_has_1_cars_when_park_given_11_cars_and_two_parking_lots() {
         //given
         int carsAmount = 11;
         List<ParkingLot> parkingLotList = new ArrayList<>();
