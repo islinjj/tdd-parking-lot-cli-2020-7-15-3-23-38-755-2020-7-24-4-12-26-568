@@ -277,4 +277,23 @@ public class SmartParkingBoyTest {
         //then
         Assertions.assertNull(parkingTicket);
     }
+
+    @Test
+    void should_print_error_msg_when_park_with_no_position_given_cars_and_capacity() {
+        //given
+        List<ParkingLot> parkingLotList = new ArrayList<>();
+        ParkingLot parkingLot = new ParkingLot();
+        parkingLotList.add(parkingLot);
+        SmartParkingBoy smartParkingBoy = new SmartParkingBoy(parkingLotList);
+        int capacity = 10;
+        for (int i = 1; i <= capacity; i++){
+            smartParkingBoy.park(new Car("A00" + i));
+        }
+
+        //when
+        smartParkingBoy.park(new Car("A0011"));
+
+        //then
+        Assertions.assertEquals("Not enough position.",systemOut());
+    }
 }
