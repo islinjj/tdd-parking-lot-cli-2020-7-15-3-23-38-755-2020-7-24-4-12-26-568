@@ -13,13 +13,13 @@ public class ParkingBoy {
     }
 
     public CarTicket park(Car car) {
-        if (isAllParkingLotFull()){
+        if (!isAllParkingLotFull()){
+            CarTicket carTicket = getCarTicket(car);
+            if (carTicket != null)
+                return carTicket;
+        }else {
             printErrorMsg("Not enough position.");
-            return null;
         }
-        CarTicket carTicket = getCarTicket(car);
-        if (carTicket != null)
-            return carTicket;
         return null;
     }
 
