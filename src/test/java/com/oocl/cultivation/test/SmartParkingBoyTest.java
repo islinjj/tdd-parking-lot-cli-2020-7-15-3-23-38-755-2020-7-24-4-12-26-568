@@ -205,4 +205,21 @@ public class SmartParkingBoyTest {
         // then
         Assertions.assertNull(fetchCar);
     }
+
+    @Test
+    void should_print_unrecognized_parking_ticket_when_fetch_given_wrong_ticket() {
+        // given
+        List<ParkingLot> parkingLotList = new ArrayList<>();
+        ParkingLot parkingLot = new ParkingLot();
+        parkingLotList.add(parkingLot);
+        SmartParkingBoy smartParkingBoy = new SmartParkingBoy(parkingLotList);
+        CarTicket wrongParkingTicket = new CarTicket("xxxx");
+
+        // when
+        smartParkingBoy.fetch(wrongParkingTicket);
+
+        // then
+        Assertions.assertEquals("Unrecognized parking ticket.", systemOut());
+    }
+
 }
