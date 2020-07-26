@@ -1,5 +1,6 @@
 package com.oocl.cultivation;
 
+import java.util.IntSummaryStatistics;
 import java.util.List;
 
 public class SuperSmartParkingBoy extends ParkingBoy{
@@ -11,12 +12,32 @@ public class SuperSmartParkingBoy extends ParkingBoy{
     @Override
     public CarTicket park(Car car) {
         if (car != null){
-            if (super.isAllParkingLotFull()){
-                System.out.print("Not enough position.");
+            IntSummaryStatistics parkingLotUsedPositionStatistics = parkingLotList.stream().mapToInt((x) -> x.getUsedParkingPosition()).summaryStatistics();//TODO:how to return ParkingLot Object
+            if (super.isAllParkingLotFull(parkingLotUsedPositionStatistics)){
+                super.printErrorMsg("Not enough position.");
             }else {
-                CarTicket carTicket = super.getCarTicket(car);
+                CarTicket carTicket = getCarTicket(car);
                 if (carTicket != null)
                     return carTicket;
+            }
+        }
+        return null;
+    }
+
+    public CarTicket getCarTicket(Car car){
+        IntSummaryStatistics parkingLotAvailableRateStatistics = parkingLotList.stream().mapToInt((x) -> (x.getCapacity()-x.getUsedParkingPosition()) % x.getCapacity()).summaryStatistics();//TODO:how to return ParkingLot Object
+        for (ParkingLot parkingLot : parkingLotList) {
+            if (parkingLot.getCapacity() == 0){
+                continue;
+            }else {
+                int rate = (parkingLot.getCapacity()-parkingLot.getUsedParkingPosition()) % parkingLot.getCapacity();
+                if (parkingLotAvailableRateStatistics.getMax() == rate){
+                    CarTicket parkingTicket = new CarTicket(car.getCarId());
+                    carTicketCarHashMap.put(parkingTicket,car);
+                    parkingLot.countUsedParkingPosition();
+                    parkingLot.countCapacity();
+                    return parkingTicket;
+                }
             }
         }
         return null;
