@@ -258,4 +258,23 @@ public class SmartParkingBoyTest {
         Assertions.assertNotNull(fetchCar);
         Assertions.assertEquals("Unrecognized parking ticket.", systemOut());
     }
+
+    @Test
+    void should_return_null_parking_ticket_when_park_with_no_position_given_cars_and_capacity() {
+        //given
+        List<ParkingLot> parkingLotList = new ArrayList<>();
+        ParkingLot parkingLot = new ParkingLot();
+        parkingLotList.add(parkingLot);
+        SmartParkingBoy smartParkingBoy = new SmartParkingBoy(parkingLotList);
+        int capacity = 10;
+        for (int i = 1; i <= capacity; i++){
+            smartParkingBoy.park(new Car("A00" + i));
+        }
+
+        //when
+        CarTicket parkingTicket = smartParkingBoy.park(new Car("A0011"));
+
+        //then
+        Assertions.assertNull(parkingTicket);
+    }
 }
