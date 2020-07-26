@@ -220,4 +220,23 @@ public class SuperSmartParkingBoyTest {
         Assertions.assertNotNull(fetchCar);
         Assertions.assertNull(fetchSameCarAgain);
     }
+
+    @Test
+    void should_print_unrecognized_parking_ticket_when_fetch_given_used_ticket() {
+        //given
+        List<ParkingLot> parkingLotList = new ArrayList<>();
+        ParkingLot parkingLot = new ParkingLot();
+        parkingLotList.add(parkingLot);
+        SuperSmartParkingBoy superSmartParkingBoy = new SuperSmartParkingBoy(parkingLotList);
+        Car car = new Car("A001");
+        CarTicket parkingTicket = superSmartParkingBoy.park(car);
+
+        //when
+        Car fetchCar = superSmartParkingBoy.fetch(parkingTicket);
+        superSmartParkingBoy.fetch(parkingTicket);
+
+        //then
+        Assertions.assertNotNull(fetchCar);
+        Assertions.assertEquals("Unrecognized parking ticket.", systemOut());
+    }
 }
