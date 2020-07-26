@@ -222,4 +222,21 @@ public class SmartParkingBoyTest {
         Assertions.assertEquals("Unrecognized parking ticket.", systemOut());
     }
 
+    @Test
+    void should_fetch_null_when_fetch_given_used_ticket() {
+        //given
+        List<ParkingLot> parkingLotList = new ArrayList<>();
+        ParkingLot parkingLot = new ParkingLot();
+        parkingLotList.add(parkingLot);
+        SmartParkingBoy smartParkingBoy = new SmartParkingBoy(parkingLotList);
+        Car car = new Car("A001");
+        CarTicket parkingTicket = smartParkingBoy.park(car);
+
+        //when
+        Car fetchCar = smartParkingBoy.fetch(parkingTicket);
+        Car fetchSameCarAgain = smartParkingBoy.fetch(parkingTicket);
+
+        Assertions.assertNotNull(fetchCar);
+        Assertions.assertNull(fetchSameCarAgain);
+    }
 }
