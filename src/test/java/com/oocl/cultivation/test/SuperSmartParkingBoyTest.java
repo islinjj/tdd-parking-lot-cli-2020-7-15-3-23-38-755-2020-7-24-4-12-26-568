@@ -1,15 +1,13 @@
 package com.oocl.cultivation.test;
 
-import com.oocl.cultivation.CarTicket;
-import com.oocl.cultivation.ParkingLot;
-import com.oocl.cultivation.SuperSmartParkingBoy;
+import com.oocl.cultivation.*;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class SuperSmartBoyTest {
+public class SuperSmartParkingBoyTest {
 
     @Test
     void should_return_null_parking_ticket_when_park_given_null_car() {
@@ -24,4 +22,5 @@ public class SuperSmartBoyTest {
         //then
         Assertions.assertNull(carTicket);
     }
+
 }
