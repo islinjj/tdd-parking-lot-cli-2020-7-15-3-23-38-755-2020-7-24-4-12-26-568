@@ -25,19 +25,16 @@ public class ParkingLot {
         return this.usedParkingPosition;
     }
 
-    public void countCapacity() {
-        this.capacity--;
-    }
-    public void countUsedParkingPosition(){
-        this.usedParkingPosition++;
-    }
-
     public CarTicket park(Car car) {
         CarTicket parkingTicket = new CarTicket(car.getCarId());
         carTicketCarHashMap.put(parkingTicket,car);
-        countCapacity();
-        countUsedParkingPosition();
+        calculateParkingLotPosition();
         return parkingTicket;
+    }
+
+    public void calculateParkingLotPosition(){
+        this.capacity--;
+        this.usedParkingPosition++;
     }
 
 }

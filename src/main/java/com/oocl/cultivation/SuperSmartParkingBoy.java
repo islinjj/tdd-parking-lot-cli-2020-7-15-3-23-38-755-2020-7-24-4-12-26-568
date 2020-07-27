@@ -33,8 +33,7 @@ public class SuperSmartParkingBoy extends ParkingBoy{
                 if (isHigherAvailableRate(parkingLotAvailableRateStatistics, parkingLot)){
                     CarTicket parkingTicket = new CarTicket(car.getCarId());
                     carTicketCarHashMap.put(parkingTicket,car);
-                    parkingLot.countUsedParkingPosition();
-                    parkingLot.countCapacity();
+                    parkingLot.calculateParkingLotPosition();
                     return parkingTicket;
                 }
             }

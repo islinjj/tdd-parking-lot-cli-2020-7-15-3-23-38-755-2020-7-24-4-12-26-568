@@ -28,8 +28,7 @@ public class SmartParkingBoy extends ParkingBoy{
             if (isParkingLotHasMinUsedPosition(parkingLotUsedPositionStatistics, parkingLot)){
                 CarTicket carTicket = new CarTicket(car.getCarId());
                 super.carTicketCarHashMap.put(carTicket,car);
-                parkingLot.countCapacity();
-                parkingLot.countUsedParkingPosition();
+                parkingLot.calculateParkingLotPosition();
                 return carTicket;
             }
         }
