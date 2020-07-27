@@ -30,9 +30,7 @@ public class ParkingBoy {
 
     CarTicket getCarTicket(Car car) {
         for (ParkingLot parkingLot : parkingLotList) {
-            if (parkingLot.getCapacity() == 0){//TODO
-                continue;
-            }else {
+            if (parkingLot.getCapacity() != 0){
                 return parkingLot.park(car);
             }
         }
