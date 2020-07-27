@@ -11,6 +11,7 @@ import java.util.Map;
 public class ParkingLot {
     private int capacity = 10;
     private int usedParkingPosition = 0;
+    protected Map<CarTicket,Car> carTicketCarHashMap = new HashMap<>();
 
     public void setUsedParkingPosition(int usedParkingPosition) {
         this.usedParkingPosition = usedParkingPosition;
@@ -30,4 +31,13 @@ public class ParkingLot {
     public void countUsedParkingPosition(){
         this.usedParkingPosition++;
     }
+
+    public CarTicket park(Car car) {
+        CarTicket parkingTicket = new CarTicket(car.getCarId());
+        carTicketCarHashMap.put(parkingTicket,car);
+        countCapacity();
+        countUsedParkingPosition();
+        return parkingTicket;
+    }
+
 }

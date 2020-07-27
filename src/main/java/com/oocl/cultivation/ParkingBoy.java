@@ -17,11 +17,12 @@ public class ParkingBoy {
         if (car != null){
             IntSummaryStatistics parkingLotUsedPositionStatistics = parkingLotList.stream().mapToInt((x) -> x.getUsedParkingPosition()).summaryStatistics();//TODO:how to return ParkingLot Object
             if (isAllParkingLotFull(parkingLotUsedPositionStatistics)){
-                System.out.print("Not enough position.");
+                System.out.print("Not enough position.");//TODO
             }else {
                 CarTicket carTicket = getCarTicket(car);
-                if (carTicket != null)
+                if (carTicket != null){
                     return carTicket;
+                }
             }
         }
         return null;
@@ -29,14 +30,10 @@ public class ParkingBoy {
 
     CarTicket getCarTicket(Car car) {
         for (ParkingLot parkingLot : parkingLotList) {
-            if (parkingLot.getCapacity() == 0){
+            if (parkingLot.getCapacity() == 0){//TODO
                 continue;
             }else {
-                CarTicket parkingTicket = new CarTicket(car.getCarId());
-                carTicketCarHashMap.put(parkingTicket,car);
-                parkingLot.countUsedParkingPosition();
-                parkingLot.countCapacity();
-                return parkingTicket;
+                return parkingLot.park(car);
             }
         }
         return null;
