@@ -2,7 +2,7 @@ package com.oocl.cultivation;
 
 import java.util.List;
 
-public class ParkingManager extends ParkingBoy{
+public class ParkingManager extends ParkingBoy {
 
     List<ParkingBoy> parkingBoys;
 
@@ -19,7 +19,7 @@ public class ParkingManager extends ParkingBoy{
     }
 
     public CarTicket assignParkingBoyToPark(ParkingBoy parkingBoy, Car car) {
-        return parkingBoy.park(car);
+        return parkingBoy == null ? null : parkingBoy.park(car);
     }
 
     public Car assignParkingBoyToFetch(ParkingBoy parkingBoy, CarTicket carTicket) {
