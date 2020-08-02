@@ -185,10 +185,10 @@ public class SmartParkingBoyTest {
         smartParkingBoy.park(car);
 
         //when
-        smartParkingBoy.fetch(null);
+        Throwable throwable = Assertions.assertThrows(FetchException.class, () -> smartParkingBoy.fetch(null));
 
         //then
-        Assertions.assertEquals("Please provide your parking ticket.",systemOut());
+        Assertions.assertEquals("Please provide your parking ticket.",throwable.getMessage());
     }
 
     @Test
