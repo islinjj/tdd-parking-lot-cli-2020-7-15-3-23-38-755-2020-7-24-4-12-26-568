@@ -205,24 +205,6 @@ public class SuperSmartParkingBoyTest {
     }
 
     @Test
-    void should_fetch_null_when_fetch_given_used_ticket() {
-        //given
-        List<ParkingLot> parkingLotList = new ArrayList<>();
-        ParkingLot parkingLot = new ParkingLot();
-        parkingLotList.add(parkingLot);
-        SuperSmartParkingBoy superSmartParkingBoy = new SuperSmartParkingBoy(parkingLotList);
-        Car car = new Car("A001");
-        CarTicket parkingTicket = superSmartParkingBoy.park(car);
-
-        //when
-        Car fetchCar = superSmartParkingBoy.fetch(parkingTicket);
-        Car fetchSameCarAgain = superSmartParkingBoy.fetch(parkingTicket);
-
-        Assertions.assertNotNull(fetchCar);
-        Assertions.assertNull(fetchSameCarAgain);
-    }
-
-    @Test
     void should_print_unrecognized_parking_ticket_when_fetch_given_used_ticket() {
         //given
         List<ParkingLot> parkingLotList = new ArrayList<>();
