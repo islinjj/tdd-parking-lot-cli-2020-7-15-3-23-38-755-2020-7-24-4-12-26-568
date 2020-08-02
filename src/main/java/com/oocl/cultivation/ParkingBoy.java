@@ -1,5 +1,6 @@
 package com.oocl.cultivation;
 
+import com.oocl.cultivation.choosestrategy.ChooseParkStrategy;
 import com.oocl.cultivation.choosestrategy.ParkingBoyChooseLotStrategy;
 import com.oocl.cultivation.exception.FetchException;
 import com.oocl.cultivation.exception.ParkException;
@@ -11,18 +12,18 @@ import static com.oocl.cultivation.common.Common.*;
 
 public class ParkingBoy {
     protected List<ParkingLot> parkingLotList;
-    protected ParkingBoyChooseLotStrategy parkingBoyChooseLotStrategy;
+    protected ChooseParkStrategy chooseParkStrategy;
 
     public ParkingBoy(List<ParkingLot> parkingLotList) {
         this.parkingLotList = parkingLotList;
-        parkingBoyChooseLotStrategy = new ParkingBoyChooseLotStrategy();
+        chooseParkStrategy = new ParkingBoyChooseLotStrategy();
     }
 
     public CarTicket park(Car car) {
         if (car == null){
             return null;
         }
-        ParkingLot parkingLot = parkingBoyChooseLotStrategy.chooseParkingLot(parkingLotList);
+        ParkingLot parkingLot = chooseParkStrategy.chooseParkingLot(parkingLotList);
         if (parkingLot != null ){
             CarTicket carTicket = parkingLot.park(car);
             return carTicket;

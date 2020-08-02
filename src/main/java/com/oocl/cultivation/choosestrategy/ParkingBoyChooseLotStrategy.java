@@ -2,10 +2,10 @@ package com.oocl.cultivation.choosestrategy;
 
 import com.oocl.cultivation.ParkingLot;
 
-import java.util.IntSummaryStatistics;
 import java.util.List;
 
 import static com.oocl.cultivation.common.Common.CAPACITY;
+import static com.oocl.cultivation.common.Common.getLotStatistics;
 
 public class ParkingBoyChooseLotStrategy implements ChooseParkStrategy {
 
@@ -21,7 +21,4 @@ public class ParkingBoyChooseLotStrategy implements ChooseParkStrategy {
     return null;
   }
 
-  private IntSummaryStatistics getLotStatistics(List<ParkingLot> parkingLots) {
-    return parkingLots.stream().mapToInt((x) -> x.getUsedParkingPosition()).summaryStatistics();
-  }
 }
