@@ -1,6 +1,7 @@
 package com.oocl.cultivation.choosestrategy;
 
 import com.oocl.cultivation.ParkingLot;
+
 import java.util.List;
 
 import static com.oocl.cultivation.common.Common.CAPACITY;
@@ -13,7 +14,7 @@ public class SuperSmartParkingBoyChooseLotStrategy implements ChooseParkStrategy
         if (getLotStatistics(parkingLots).getMin() != CAPACITY) {
             double maxCapacityRate = -1;
             for (ParkingLot parkingLot : parkingLots) {
-                double rate = CAPACITY - parkingLot.getUsedParkingPosition() / parkingLot.getCapacity();
+                double rate = (CAPACITY - parkingLot.getUsedParkingPosition()) * 1.0 / CAPACITY;
                 if (rate > maxCapacityRate) {
                     bestParkingLot = parkingLot;
                     maxCapacityRate = rate;
