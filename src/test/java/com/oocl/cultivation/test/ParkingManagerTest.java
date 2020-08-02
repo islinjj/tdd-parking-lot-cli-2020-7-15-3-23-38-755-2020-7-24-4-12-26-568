@@ -1,15 +1,16 @@
 package com.oocl.cultivation.test;
 
 import com.oocl.cultivation.*;
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.mockito.Mockito;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
 import static org.junit.Assert.*;
+import static org.mockito.Mockito.when;
 
 public class ParkingManagerTest {
 
@@ -48,7 +49,7 @@ public class ParkingManagerTest {
         Car car = new Car("A001");
 
         //when
-        CarTicket carTicket = parkingManager.assignParkingBoy(null,car);
+        CarTicket carTicket = parkingManager.assignParkingBoyToPark(null,car);
 
         //then
         assertNull(carTicket);
@@ -63,9 +64,22 @@ public class ParkingManagerTest {
         Car car = new Car("A001");
 
         //when
-        CarTicket carTicket = parkingManager.assignParkingBoy(parkingBoyOne,car);
+        CarTicket carTicket = parkingManager.assignParkingBoyToPark(parkingBoyOne,car);
 
         //then
         assertNotNull(carTicket);
+    }
+
+    @Test
+    void should_return_1_car_when_assign_parking_boy_given_1_car_ticket_and_1_parking_boys() {
+        //given
+        ParkingBoy parkingBoyOne = new ParkingBoy(parkingLots, 1);
+        CarTicket carTicket = parkingManager.assignParkingBoyToPark(parkingBoyOne,new Car("A001"));
+
+        //when
+        Car car = parkingManager.assignParkingBoyToFetch(parkingBoyOne,carTicket);
+
+        //then
+        assertNotNull(car);
     }
 }
