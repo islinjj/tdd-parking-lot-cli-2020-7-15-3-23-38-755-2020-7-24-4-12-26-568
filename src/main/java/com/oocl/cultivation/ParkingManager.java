@@ -1,5 +1,6 @@
 package com.oocl.cultivation;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class ParkingManager extends ParkingBoy {
@@ -8,6 +9,7 @@ public class ParkingManager extends ParkingBoy {
 
     public ParkingManager(List<ParkingLot> parkingLots) {
         super(parkingLots);
+        parkingBoys = new ArrayList<>();
     }
 
     public void addParkingBoy(ParkingBoy parkingBoy) {
