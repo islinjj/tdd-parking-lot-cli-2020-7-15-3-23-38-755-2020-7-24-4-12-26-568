@@ -1,6 +1,7 @@
 package com.oocl.cultivation.test;
 
 import com.oocl.cultivation.*;
+import com.oocl.cultivation.exception.FetchException;
 import com.oocl.cultivation.exception.ParkException;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
@@ -198,10 +199,10 @@ public class SuperSmartParkingBoyTest {
         CarTicket wrongParkingTicket = new CarTicket("xxxx");
 
         // when
-        superSmartParkingBoy.fetch(wrongParkingTicket);
+        Throwable throwable = Assertions.assertThrows(FetchException.class, () -> superSmartParkingBoy.fetch(wrongParkingTicket));
 
         // then
-        Assertions.assertEquals("Unrecognized parking ticket.", systemOut());
+        Assertions.assertEquals("Unrecognized parking ticket.", throwable.getMessage());
     }
 
     @Test
