@@ -26,9 +26,13 @@ public class ParkingLot {
     }
 
     public CarTicket park(Car car) {
-        CarTicket parkingTicket = new CarTicket(car.getCarId());
-        carTicketCarHashMap.put(parkingTicket,car);
-        calculateParkingLotPosition();
+        CarTicket parkingTicket = null;
+        if (!carTicketCarHashMap.containsValue(car)){
+            parkingTicket = new CarTicket(car.getCarId());
+            carTicketCarHashMap.put(parkingTicket,car);
+            calculateParkingLotPosition();
+        }
+
         return parkingTicket;
     }
 
