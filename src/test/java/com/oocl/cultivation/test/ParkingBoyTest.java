@@ -200,10 +200,10 @@ class ParkingBoyTest {
         CarTicket wrongParkingTicket = new CarTicket("xxxx");
 
         // when
-        parkingBoy.fetch(wrongParkingTicket);
+        Throwable throwable = Assertions.assertThrows(FetchException.class, () -> parkingBoy.fetch(wrongParkingTicket));
 
         // then
-        Assertions.assertEquals("Unrecognized parking ticket.", systemOut());
+        Assertions.assertEquals("Unrecognized parking ticket.", throwable.getMessage());
     }
 
     @Test
