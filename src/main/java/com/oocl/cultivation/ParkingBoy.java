@@ -13,9 +13,20 @@ import static com.oocl.cultivation.common.Common.*;
 public class ParkingBoy {
     protected List<ParkingLot> parkingLotList;
     protected ChooseParkStrategy chooseParkStrategy;
+    protected int id;
 
     public ParkingBoy(List<ParkingLot> parkingLotList) {
         this.parkingLotList = parkingLotList;
+        chooseParkStrategy = new ParkingBoyChooseLotStrategy();
+    }
+
+    public ParkingBoy(int id) {
+        this.id = id;
+    }
+
+    public ParkingBoy(List<ParkingLot> parkingLotList, int id) {
+        this.parkingLotList = parkingLotList;
+        this.id = id;
         chooseParkStrategy = new ParkingBoyChooseLotStrategy();
     }
 

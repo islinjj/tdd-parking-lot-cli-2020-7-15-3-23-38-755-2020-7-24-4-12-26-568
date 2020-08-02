@@ -18,4 +18,8 @@ public class ParkingManager {
     public List<ParkingBoy> getParkingBoys() {
         return parkingBoys;
     }
+
+    public CarTicket assignParkingBoy(ParkingBoy parkingBoy, Car car) {
+        return parkingBoy.park(car);
+    }
 }
