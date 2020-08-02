@@ -238,7 +238,7 @@ public class SuperSmartParkingBoyTest {
         ParkingLot parkingLotOne = new ParkingLot();
         ParkingLot parkingLotTwo = new ParkingLot();
         parkingLotOne.setUsedParkingPosition(6);
-        parkingLotTwo.setUsedParkingPosition(4);
+        parkingLotTwo.setUsedParkingPosition(5);
         List<ParkingLot> parkingLotList = new ArrayList<>();
         parkingLotList.add(parkingLotOne);
         parkingLotList.add(parkingLotTwo);
@@ -250,6 +250,6 @@ public class SuperSmartParkingBoyTest {
 
         //then
         Assertions.assertEquals(7, parkingLotOne.getUsedParkingPosition());
-        Assertions.assertEquals(5, parkingLotTwo.getUsedParkingPosition());
+        Assertions.assertEquals(6, parkingLotTwo.getUsedParkingPosition());
     }
 }
