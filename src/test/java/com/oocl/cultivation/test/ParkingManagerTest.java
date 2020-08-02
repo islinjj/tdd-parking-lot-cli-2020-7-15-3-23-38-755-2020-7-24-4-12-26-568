@@ -152,4 +152,24 @@ public class ParkingManagerTest {
         // then
         Assertions.assertEquals("Unrecognized parking ticket.", throwable.getMessage());
     }
+
+    @Test
+    void should_print_unrecognized_parking_ticket_when_fetch_given_used_ticket() {
+        //given
+        List<ParkingLot> parkingLotList = new ArrayList<>();
+        ParkingLot parkingLot = new ParkingLot();
+        parkingLotList.add(parkingLot);
+        ParkingManager parkingManager = new ParkingManager(parkingLotList);
+        Car car = new Car("A001");
+        CarTicket parkingTicket = parkingManager.park(car);
+
+        //when
+        Car fetchCar = parkingManager.fetch(parkingTicket);
+
+        Throwable throwable = Assertions.assertThrows(FetchException.class,() -> parkingManager.fetch(parkingTicket));
+
+        //then
+        Assertions.assertNotNull(fetchCar);
+        Assertions.assertEquals("Unrecognized parking ticket.", throwable.getMessage());
+    }
 }
