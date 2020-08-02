@@ -183,11 +183,11 @@ public class SuperSmartParkingBoyTest {
 
         //when
         Car fetchCar = superSmartParkingBoy.fetch(parkingTicket);
-        superSmartParkingBoy.fetch(parkingTicket);
+        Throwable throwable = Assertions.assertThrows(FetchException.class, () -> superSmartParkingBoy.fetch(parkingTicket));
 
         //then
         Assertions.assertNotNull(fetchCar);
-        Assertions.assertEquals("Unrecognized parking ticket.", systemOut());
+        Assertions.assertEquals("Unrecognized parking ticket.", throwable.getMessage());
     }
 
     @Test
