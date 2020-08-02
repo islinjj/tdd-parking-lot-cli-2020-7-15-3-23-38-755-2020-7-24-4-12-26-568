@@ -54,7 +54,7 @@ public class SuperSmartParkingBoyTest {
 
         //then
         Assertions.assertNotNull(parkingTicket);
-        Assertions.assertEquals(carId,parkingTicket.getTicketId());
+        Assertions.assertEquals(carId, parkingTicket.getTicketId());
     }
 
     @Test
@@ -73,8 +73,8 @@ public class SuperSmartParkingBoyTest {
 
         Assertions.assertNotNull(parkingTicketOne);
         Assertions.assertNotNull(parkingTicketTwo);
-        Assertions.assertEquals(carOne.getCarId(),parkingTicketOne.getTicketId());
-        Assertions.assertEquals(carTwo.getCarId(),parkingTicketTwo.getTicketId());
+        Assertions.assertEquals(carOne.getCarId(), parkingTicketOne.getTicketId());
+        Assertions.assertEquals(carTwo.getCarId(), parkingTicketTwo.getTicketId());
     }
 
     @Test
@@ -92,7 +92,7 @@ public class SuperSmartParkingBoyTest {
 
         //then
         Assertions.assertNotNull(fetchCar);
-        Assertions.assertEquals(car,fetchCar);
+        Assertions.assertEquals(car, fetchCar);
     }
 
     @Test
@@ -114,8 +114,8 @@ public class SuperSmartParkingBoyTest {
         //then
         Assertions.assertNotNull(fetchCarOne);
         Assertions.assertNotNull(fetchCarTwo);
-        Assertions.assertEquals(carOne,fetchCarOne);
-        Assertions.assertEquals(carTwo,fetchCarTwo);
+        Assertions.assertEquals(carOne, fetchCarOne);
+        Assertions.assertEquals(carTwo, fetchCarTwo);
     }
 
     @Test
@@ -135,24 +135,7 @@ public class SuperSmartParkingBoyTest {
 
         //then
         Assertions.assertNotNull(fetchCarOne);
-        Assertions.assertEquals(carOne,fetchCarOne);
-    }
-
-    @Test
-    void should_fetch_null_when_fetch_given_no_ticket() {
-        //given
-        Car car = new Car("A001");
-        List<ParkingLot> parkingLotList = new ArrayList<>();
-        ParkingLot parkingLot = new ParkingLot();
-        parkingLotList.add(parkingLot);
-        SuperSmartParkingBoy superSmartParkingBoy = new SuperSmartParkingBoy(parkingLotList);
-        superSmartParkingBoy.park(car);
-
-        //when
-        Car fetchCar = superSmartParkingBoy.fetch(null);
-
-        //then
-        Assertions.assertNull(fetchCar);
+        Assertions.assertEquals(carOne, fetchCarOne);
     }
 
     @Test
@@ -166,10 +149,10 @@ public class SuperSmartParkingBoyTest {
         superSmartParkingBoy.park(car);
 
         //when
-        superSmartParkingBoy.fetch(null);
+        Throwable throwable = Assertions.assertThrows(FetchException.class, () -> superSmartParkingBoy.fetch(null));
 
         //then
-        Assertions.assertEquals("Please provide your parking ticket.",systemOut());
+        Assertions.assertEquals("Please provide your parking ticket.", throwable.getMessage());
     }
 
     @Test
@@ -215,7 +198,7 @@ public class SuperSmartParkingBoyTest {
         parkingLotList.add(parkingLot);
         SuperSmartParkingBoy superSmartParkingBoy = new SuperSmartParkingBoy(parkingLotList);
         int capacity = 10;
-        for (int i = 1; i <= capacity; i++){
+        for (int i = 1; i <= capacity; i++) {
             superSmartParkingBoy.park(new Car("A00" + i));
         }
 
@@ -223,7 +206,7 @@ public class SuperSmartParkingBoyTest {
         Throwable throwable = Assertions.assertThrows(ParkException.class, () -> superSmartParkingBoy.park(new Car("A0011")));
 
         //then
-        Assertions.assertEquals("Not enough position.",throwable.getMessage());
+        Assertions.assertEquals("Not enough position.", throwable.getMessage());
     }
 
     @Test
@@ -243,8 +226,8 @@ public class SuperSmartParkingBoyTest {
         superSmartParkingBoy.park(car);
 
         //then
-        Assertions.assertEquals(4,parkingLotOne.getUsedParkingPosition());
-        Assertions.assertEquals(3,parkingLotTwo.getUsedParkingPosition());
+        Assertions.assertEquals(4, parkingLotOne.getUsedParkingPosition());
+        Assertions.assertEquals(3, parkingLotTwo.getUsedParkingPosition());
     }
 
     @Test
@@ -266,7 +249,7 @@ public class SuperSmartParkingBoyTest {
         superSmartParkingBoy.park(carTwo);
 
         //then
-        Assertions.assertEquals(7,parkingLotOne.getUsedParkingPosition());
-        Assertions.assertEquals(5,parkingLotTwo.getUsedParkingPosition());
+        Assertions.assertEquals(7, parkingLotOne.getUsedParkingPosition());
+        Assertions.assertEquals(5, parkingLotTwo.getUsedParkingPosition());
     }
 }
