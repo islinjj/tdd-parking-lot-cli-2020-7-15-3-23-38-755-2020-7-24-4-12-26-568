@@ -1,6 +1,7 @@
 package com.oocl.cultivation.test;
 
 import com.oocl.cultivation.*;
+import com.oocl.cultivation.exception.FetchException;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -117,5 +118,22 @@ public class ParkingManagerTest {
         //then
         Assertions.assertNotNull(fetchCar);
         Assertions.assertEquals(car,fetchCar);
+    }
+
+    @Test
+    void should_print_error_msg_when_fetch_given_no_ticket() {
+        //given
+        Car car = new Car("A001");
+        List<ParkingLot> parkingLotList = new ArrayList<>();
+        ParkingLot parkingLot = new ParkingLot();
+        parkingLotList.add(parkingLot);
+        ParkingManager parkingManager = new ParkingManager(parkingLotList);
+        parkingManager.park(car);
+
+        //when
+        Throwable throwable = Assertions.assertThrows(FetchException.class, () -> parkingManager.fetch(null));
+
+        //then
+        Assertions.assertEquals("Please provide your parking ticket.",throwable.getMessage());
     }
 }
