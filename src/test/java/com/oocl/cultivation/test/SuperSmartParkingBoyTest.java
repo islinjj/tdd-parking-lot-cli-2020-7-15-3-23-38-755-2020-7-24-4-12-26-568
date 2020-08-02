@@ -1,6 +1,7 @@
 package com.oocl.cultivation.test;
 
 import com.oocl.cultivation.*;
+import com.oocl.cultivation.exception.ParkException;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -272,10 +273,10 @@ public class SuperSmartParkingBoyTest {
         }
 
         //when
-        superSmartParkingBoy.park(new Car("A0011"));
+        Throwable throwable = Assertions.assertThrows(ParkException.class, () -> superSmartParkingBoy.park(new Car("A0011")));
 
         //then
-        Assertions.assertEquals("Not enough position.",systemOut());
+        Assertions.assertEquals("Not enough position.",throwable.getMessage());
     }
 
     @Test
