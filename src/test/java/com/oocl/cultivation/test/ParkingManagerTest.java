@@ -1,6 +1,7 @@
 package com.oocl.cultivation.test;
 
 import com.oocl.cultivation.*;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
@@ -20,10 +21,10 @@ public class ParkingManagerTest {
 
     @BeforeEach
     void init(){
-        parkingManager = new ParkingManager();
         parkingLot = new ParkingLot();
         parkingLots = new ArrayList<>();
         parkingLots.add(parkingLot);
+        parkingManager = new ParkingManager(parkingLots);
     }
 
     @Test
@@ -81,5 +82,22 @@ public class ParkingManagerTest {
 
         //then
         assertNotNull(car);
+    }
+
+    @Test
+    void should_return_parking_ticket_when_park_given_1_car() {
+        //given
+        String carId = "A001";
+        Car car = new Car(carId);
+        List<ParkingLot> parkingLotList = new ArrayList<>();
+        ParkingLot parkingLot = new ParkingLot();
+        parkingLotList.add(parkingLot);
+        ParkingManager parkingManager = new ParkingManager(parkingLotList);
+
+        //when
+        CarTicket parkingTicket = parkingManager.park(car);
+
+        //then
+        Assertions.assertNotNull(parkingTicket);
     }
 }
