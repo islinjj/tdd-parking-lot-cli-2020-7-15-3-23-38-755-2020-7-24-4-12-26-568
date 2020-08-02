@@ -163,10 +163,10 @@ class ParkingBoyTest {
         parkingBoy.park(car);
 
         //when
-        parkingBoy.fetch(null);
+        Throwable throwable = Assertions.assertThrows(FetchException.class, () -> parkingBoy.fetch(null));
 
         //then
-        Assertions.assertEquals("Please provide your parking ticket.",systemOut());
+        Assertions.assertEquals("Please provide your parking ticket.",throwable.getMessage());
     }
 
     @Test
