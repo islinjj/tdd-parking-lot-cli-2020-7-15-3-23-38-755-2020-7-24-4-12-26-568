@@ -2,6 +2,7 @@ package com.oocl.cultivation.test;
 
 import com.oocl.cultivation.*;
 import com.oocl.cultivation.exception.FetchException;
+import com.oocl.cultivation.exception.ParkException;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -171,5 +172,24 @@ public class ParkingManagerTest {
         //then
         Assertions.assertNotNull(fetchCar);
         Assertions.assertEquals("Unrecognized parking ticket.", throwable.getMessage());
+    }
+
+    @Test
+    void should_print_error_msg_when_park_with_no_position_given_cars_and_capacity() {
+        //given
+        List<ParkingLot> parkingLotList = new ArrayList<>();
+        ParkingLot parkingLot = new ParkingLot();
+        parkingLotList.add(parkingLot);
+        ParkingManager parkingManager = new ParkingManager(parkingLotList);
+        int capacity = 10;
+        for (int i = 1; i <= capacity; i++){
+            parkingManager.park(new Car("A00" + i));
+        }
+
+        //when
+        Throwable throwable = Assertions.assertThrows(ParkException.class, () -> parkingManager.park(new Car("A0011")));
+
+        //then
+        Assertions.assertEquals("Not enough position.",throwable.getMessage());
     }
 }
