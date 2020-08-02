@@ -23,6 +23,6 @@ public class ParkingManager extends ParkingBoy {
     }
 
     public Car assignParkingBoyToFetch(ParkingBoy parkingBoy, CarTicket carTicket) {
-        return parkingBoy.fetch(carTicket);
+        return parkingBoy == null ? null : parkingBoy.fetch(carTicket);
     }
 }
