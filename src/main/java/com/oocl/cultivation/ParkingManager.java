@@ -3,12 +3,12 @@ package com.oocl.cultivation;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ParkingManager {
+public class ParkingManager extends ParkingBoy{
 
     List<ParkingBoy> parkingBoys;
 
-    public ParkingManager() {
-        this.parkingBoys = new ArrayList<>();
+    public ParkingManager(List<ParkingLot> parkingLots) {
+        super(parkingLots);
     }
 
     public void addParkingBoy(ParkingBoy parkingBoy) {
