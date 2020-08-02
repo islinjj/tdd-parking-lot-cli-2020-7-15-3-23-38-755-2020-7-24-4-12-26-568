@@ -139,7 +139,7 @@ public class SuperSmartParkingBoyTest {
     }
 
     @Test
-    void should_print_error_msg_when_fetch_given_no_ticket() {
+    void should_throw_error_msg_when_fetch_given_no_ticket() {
         //given
         Car car = new Car("A001");
         List<ParkingLot> parkingLotList = new ArrayList<>();
@@ -156,7 +156,7 @@ public class SuperSmartParkingBoyTest {
     }
 
     @Test
-    void should_print_unrecognized_parking_ticket_when_fetch_given_wrong_ticket() {
+    void should_throw_unrecognized_parking_ticket_when_fetch_given_wrong_ticket() {
         // given
         List<ParkingLot> parkingLotList = new ArrayList<>();
         ParkingLot parkingLot = new ParkingLot();
@@ -172,7 +172,7 @@ public class SuperSmartParkingBoyTest {
     }
 
     @Test
-    void should_print_unrecognized_parking_ticket_when_fetch_given_used_ticket() {
+    void should_throw_unrecognized_parking_ticket_when_fetch_given_used_ticket() {
         //given
         List<ParkingLot> parkingLotList = new ArrayList<>();
         ParkingLot parkingLot = new ParkingLot();
@@ -191,7 +191,7 @@ public class SuperSmartParkingBoyTest {
     }
 
     @Test
-    void should_print_error_msg_when_park_with_no_position_given_cars_and_capacity() {
+    void should_throw_error_msg_when_park_with_no_position_given_cars_and_capacity() {
         //given
         List<ParkingLot> parkingLotList = new ArrayList<>();
         ParkingLot parkingLot = new ParkingLot();
