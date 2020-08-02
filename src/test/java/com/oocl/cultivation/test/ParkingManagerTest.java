@@ -12,8 +12,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNull;
+import static org.junit.Assert.*;
 
 public class ParkingManagerTest {
 
@@ -51,5 +50,20 @@ public class ParkingManagerTest {
 
         //then
         assertNull(carTicket);
+    }
+
+    @Test
+    void should_return_1_car_ticket_when_assign_parking_boy_given_1_car_and_2_parking_boys() {
+        //given
+        ParkingBoy parkingBoyOne = new ParkingBoy(1);
+        ParkingBoy parkingBoyTwo = new ParkingBoy(2);
+        List<ParkingBoy> parkingBoys = Arrays.asList(parkingBoyOne,parkingBoyTwo);
+        Car car = new Car("A001");
+
+        //when
+        CarTicket carTicket = parkingManager.assignParkingBoy(parkingBoyOne,car);
+
+        //then
+        assertNotNull(carTicket);
     }
 }
