@@ -6,7 +6,7 @@ import java.util.List;
 
 public class SmartParkingBoy extends ParkingBoy {
 
-    private SmartParkingBoy(List<ParkingLot> parkingLotList) {
+    public SmartParkingBoy(List<ParkingLot> parkingLotList) {
         super(parkingLotList);
         this.chooseParkStrategy = new SmartParkingBoyChooseLotStrategy();
     }
