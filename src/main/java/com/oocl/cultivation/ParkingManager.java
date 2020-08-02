@@ -19,7 +19,11 @@ public class ParkingManager {
         return parkingBoys;
     }
 
-    public CarTicket assignParkingBoy(ParkingBoy parkingBoy, Car car) {
+    public CarTicket assignParkingBoyToPark(ParkingBoy parkingBoy, Car car) {
         return parkingBoy.park(car);
+    }
+
+    public Car assignParkingBoyToFetch(ParkingBoy parkingBoy, CarTicket carTicket) {
+        return parkingBoy.fetch(carTicket);
     }
 }
