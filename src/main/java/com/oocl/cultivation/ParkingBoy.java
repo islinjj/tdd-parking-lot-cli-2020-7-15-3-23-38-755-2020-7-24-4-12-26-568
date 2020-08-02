@@ -37,26 +37,21 @@ public class ParkingBoy {
         if (parkingLot != null ){
             CarTicket carTicket = parkingLot.park(car);
             return carTicket;
-        }else {
-            throw new ParkException(NOT_ENOUGH_POSITION);
         }
+        throw new ParkException(NOT_ENOUGH_POSITION);
     }
 
     public Car fetch(CarTicket parkingTicket) {
         if (!isProvideTicket(parkingTicket)){
             throw new FetchException(PROVIDE_TICKET);
         }
-        Car car = null;
         for (ParkingLot parkingLot : parkingLotList) {
-            car = parkingLot.fetch(parkingTicket);
+            Car car = parkingLot.fetch(parkingTicket);
             if (car != null){
-                break;
+                return car;
             }
         }
-        if (car == null){
-            throw new FetchException(UNRECOGNIZED_PARKING_TICKET);
-        }
-        return car;
+        throw new FetchException(UNRECOGNIZED_PARKING_TICKET);
     }
 
     protected boolean isProvideTicket(CarTicket parkingTicket){
