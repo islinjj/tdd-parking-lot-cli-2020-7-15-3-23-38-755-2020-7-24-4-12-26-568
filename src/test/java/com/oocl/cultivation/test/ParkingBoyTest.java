@@ -314,4 +314,22 @@ class ParkingBoyTest {
         //then
         Assertions.assertEquals("",systemOut());
     }
+
+    @Test
+    void should_return_null_when_park_given_1_parked_car() {
+        //given
+        String carId = "A001";
+        Car car = new Car(carId);
+        List<ParkingLot> parkingLotList = new ArrayList<>();
+        ParkingLot parkingLot = new ParkingLot();
+        parkingLotList.add(parkingLot);
+        ParkingBoy parkingBoy = new ParkingBoy(parkingLotList);
+
+        //when
+        parkingBoy.park(car);
+        CarTicket parkingTicket = parkingBoy.park(car);
+
+        //then
+        Assertions.assertNull(parkingTicket);
+    }
 }
