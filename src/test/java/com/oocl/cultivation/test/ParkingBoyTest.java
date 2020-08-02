@@ -136,23 +136,6 @@ class ParkingBoyTest {
     }
 
     @Test
-    void should_fetch_null_when_fetch_given_no_ticket() {
-        //given
-        Car car = new Car("A001");
-        List<ParkingLot> parkingLotList = new ArrayList<>();
-        ParkingLot parkingLot = new ParkingLot();
-        parkingLotList.add(parkingLot);
-        ParkingBoy parkingBoy = new ParkingBoy(parkingLotList);
-        parkingBoy.park(car);
-
-        //when
-        Car fetchCar = parkingBoy.fetch(null);
-
-        //then
-        Assertions.assertNull(fetchCar);
-    }
-
-    @Test
     void should_print_error_msg_when_fetch_given_no_ticket() {
         //given
         Car car = new Car("A001");
@@ -247,25 +230,6 @@ class ParkingBoyTest {
         //then
         Assertions.assertNotNull(fetchCar);
         Assertions.assertEquals("Unrecognized parking ticket.", throwable.getMessage());
-    }
-
-    @Test
-    void should_return_null_parking_ticket_when_park_with_no_position_given_cars_and_capacity() {
-        //given
-        List<ParkingLot> parkingLotList = new ArrayList<>();
-        ParkingLot parkingLot = new ParkingLot();
-        parkingLotList.add(parkingLot);
-        ParkingBoy parkingBoy = new ParkingBoy(parkingLotList);
-        int capacity = 10;
-        for (int i = 1; i <= capacity; i++){
-            parkingBoy.park(new Car("A00" + i));
-        }
-
-        //when
-        CarTicket parkingTicket = parkingBoy.park(new Car("A0011"));
-
-        //then
-        Assertions.assertNull(parkingTicket);
     }
 
     @Test
