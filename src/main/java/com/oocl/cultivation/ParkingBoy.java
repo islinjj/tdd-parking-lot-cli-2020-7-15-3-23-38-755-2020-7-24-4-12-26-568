@@ -5,7 +5,6 @@ import com.oocl.cultivation.choosestrategy.ParkingBoyChooseLotStrategy;
 import com.oocl.cultivation.exception.FetchException;
 import com.oocl.cultivation.exception.ParkException;
 
-import java.util.IntSummaryStatistics;
 import java.util.List;
 
 import static com.oocl.cultivation.common.Common.*;
@@ -62,13 +61,5 @@ public class ParkingBoy {
 
     protected boolean isProvideTicket(CarTicket parkingTicket){
         return parkingTicket != null;
-    }
-
-    protected boolean isAllParkingLotFull(IntSummaryStatistics parkingLotUsedPositionStatistics) {
-        return parkingLotUsedPositionStatistics.getMin() == 10;
-    }
-
-    protected void printErrorMsg(String s) {
-        System.out.print(s);
     }
 }
