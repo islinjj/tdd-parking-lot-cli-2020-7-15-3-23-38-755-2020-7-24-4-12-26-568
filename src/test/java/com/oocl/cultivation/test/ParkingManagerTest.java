@@ -1,9 +1,6 @@
 package com.oocl.cultivation.test;
 
-import com.oocl.cultivation.Car;
-import com.oocl.cultivation.CarTicket;
-import com.oocl.cultivation.ParkingBoy;
-import com.oocl.cultivation.ParkingManager;
+import com.oocl.cultivation.*;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -17,10 +14,15 @@ import static org.junit.Assert.*;
 public class ParkingManagerTest {
 
     ParkingManager parkingManager;
+    ParkingLot parkingLot;
+    List<ParkingLot> parkingLots;
 
     @BeforeEach
     void init(){
         parkingManager = new ParkingManager();
+        parkingLot = new ParkingLot();
+        parkingLots = new ArrayList<>();
+        parkingLots.add(parkingLot);
     }
 
     @Test
@@ -55,8 +57,8 @@ public class ParkingManagerTest {
     @Test
     void should_return_1_car_ticket_when_assign_parking_boy_given_1_car_and_2_parking_boys() {
         //given
-        ParkingBoy parkingBoyOne = new ParkingBoy(1);
-        ParkingBoy parkingBoyTwo = new ParkingBoy(2);
+        ParkingBoy parkingBoyOne = new ParkingBoy(parkingLots, 1);
+        ParkingBoy parkingBoyTwo = new ParkingBoy(parkingLots, 2);
         List<ParkingBoy> parkingBoys = Arrays.asList(parkingBoyOne,parkingBoyTwo);
         Car car = new Car("A001");
 
