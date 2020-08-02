@@ -1,6 +1,7 @@
 package com.oocl.cultivation.test;
 
 import com.oocl.cultivation.*;
+import com.oocl.cultivation.exception.FetchException;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -176,9 +177,13 @@ class ParkingBoyTest {
         ParkingBoy parkingBoy = new ParkingBoy(parkingLotList);
         CarTicket wrongParkingTicket = new CarTicket("xxxx");
 
-        // when
         //when
-        Car fetchCar = parkingBoy.fetch(wrongParkingTicket);
+        Car fetchCar;
+        try{
+            fetchCar = parkingBoy.fetch(wrongParkingTicket);
+        } catch (FetchException e) {
+            fetchCar = null;
+        }
 
         // then
         Assertions.assertNull(fetchCar);
@@ -212,7 +217,12 @@ class ParkingBoyTest {
 
         //when
         Car fetchCar = parkingBoy.fetch(parkingTicket);
-        Car fetchSameCarAgain = parkingBoy.fetch(parkingTicket);
+        Car fetchSameCarAgain;
+        try{
+            fetchSameCarAgain = parkingBoy.fetch(parkingTicket);
+        } catch (FetchException e){
+            fetchSameCarAgain = null;
+        }
 
         Assertions.assertNotNull(fetchCar);
         Assertions.assertNull(fetchSameCarAgain);
@@ -230,11 +240,12 @@ class ParkingBoyTest {
 
         //when
         Car fetchCar = parkingBoy.fetch(parkingTicket);
-        parkingBoy.fetch(parkingTicket);
+
+        Throwable throwable = Assertions.assertThrows(FetchException.class,() -> parkingBoy.fetch(parkingTicket));
 
         //then
         Assertions.assertNotNull(fetchCar);
-        Assertions.assertEquals("Unrecognized parking ticket.", systemOut());
+        Assertions.assertEquals("Unrecognized parking ticket.", throwable.getMessage());
     }
 
     @Test
@@ -269,7 +280,7 @@ class ParkingBoyTest {
         }
 
         //when
-        parkingBoy.park(new Car("A0011"));
+            parkingBoy.park(new Car("A0011"));
 
         //then
         Assertions.assertEquals("Not enough position.",systemOut());

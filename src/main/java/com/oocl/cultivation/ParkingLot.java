@@ -37,4 +37,9 @@ public class ParkingLot {
         this.usedParkingPosition++;
     }
 
+    public Car fetch(CarTicket parkingTicket) {
+        Car car = carTicketCarHashMap.get(parkingTicket);
+        carTicketCarHashMap.remove(parkingTicket);
+        return car;
+    }
 }
